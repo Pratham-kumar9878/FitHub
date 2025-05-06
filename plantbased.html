@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plant-Based Diet Plan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffdf9;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(to right, #ff6f00, #ffa726);
+      color: white;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 0.8s ease-out;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .navbar h1 {
+      font-size: 1.8rem;
+      text-shadow: 1px 1px 2px #444;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffe0b2;
+    }
+
+    main {
+      padding: 2rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #ff7043;
+      font-size: 2rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(255, 152, 0, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card h2 {
+      padding: 1rem;
+      color: #ef6c00;
+    }
+
+    .card ul {
+      padding: 0 1.5rem 1.5rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: #fff3e0;
+      padding: 2rem;
+      text-align: center;
+      color: #444;
+      animation: fadeInUp 1s ease;
+    }
+
+    footer small {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    button {
+      background: #ff7043;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #f4511e;
+      transform: scale(1.05);
+    }
+
+    #tip {
+      margin-top: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    #tip.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header/Navbar -->
+  <header>
+    <div class="navbar">
+      <h1>🔥 FatBurnPro</h1>
+      <div class="nav-links">
+        <a href="muscle.html">Home</a>
+        <a href="#">Plan</a>
+        <a href="#tip">Tips</a>
+        <a href="developer.html">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="section-title">2400–2800 Calorie Plant-Based Meal Plan</div>
+    <div class="cards">
+      <div class="card">
+        <img src="Images/breakfastplant.jpg" alt="Breakfast">
+        <h2>Breakfast</h2>
+        <ul>
+          <li>Chia Pudding with Almond Milk</li>
+          <li>1 Banana</li>
+          <li>2 Slices Whole Wheat Toast with Peanut Butter</li>
+        </ul>
+      </div>
+      <div class="card">
+        <img src="Images/lunchplant.jpg" alt="Lunch">
+        <h2>Lunch</h2>
+        <ul>
+          <li>Grilled Tofu or Tempeh</li>
+          <li>Mixed Greens Salad with Avocado</li>
+          <li>1 Cup Quinoa or Brown Rice</li>
+        </ul>
+      </div>
+      <div class="card">
+        <img src="Images/plantsnack.jpg" alt="Snacks">
+        <h2>Snacks</h2>
+        <ul>
+          <li>Almonds or Cashews</li>
+          <li>Green Smoothie with Spinach, Banana, and Plant Milk</li>
+        </ul>
+      </div>
+      <div class="card">
+        <img src="Images/plantdinner.jpg" alt="Dinner">
+        <h2>Dinner</h2>
+        <ul>
+          <li>Lentil or Chickpea Stew</li>
+          <li>Roasted Sweet Potatoes</li>
+          <li>Steamed Broccoli or Kale</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <button id="reveal-btn">🔥 Show Plant-Based Tip</button>
+    <p id="tip">💡 A plant-based diet can reduce inflammation and improve heart health. Focus on whole foods and variety!</p>
+    <small>&copy; 2025 FatBurnPro. All rights reserved.</small>
+  </footer>
+
+  <script>
+    const tip = document.getElementById("tip");
+    const btn = document.getElementById("reveal-btn");
+
+    btn.addEventListener("click", () => {
+      tip.classList.toggle("show");
+      btn.innerText = tip.classList.contains("show") ? "❌ Hide Tip" : "🔥 Show Plant-Based Tip";
+    });
+  </script>
+
+</body>
+</html>

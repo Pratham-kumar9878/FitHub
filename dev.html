@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fithub Developers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* White text for better contrast */
+        }
+        header {
+            background: #ff5722; /* Orange header */
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #000000 3px solid; /* Black bottom border */
+        }
+        header h1 {
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .developer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .developer-card {
+            background: #1e1e1e; /* Dark card background */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 87, 34, 0.5); /* Orange shadow */
+            transition: transform 0.3s ease;
+        }
+        .developer-card:hover {
+            transform: translateY(-5px);
+        }
+        .developer-card img {
+            width: 100px; /* Fixed width for circular images */
+            height: 100px; /* Fixed height for circular images */
+            border-radius: 50%; /* Circular frame */
+            object-fit: cover; /* Cover image within the circle */
+        }
+        .developer-card h3 {
+            margin-top: 10px;
+            color: #ff5722; /* Orange text for names */
+        }
+        .developer-card h4 {
+            color: #ff9800; /* Lighter orange for roles */
+        }
+        .developer-card p {
+            margin: 10px 0;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .skill {
+            background: #ff5722; /* Orange skill tags */
+            color: #ffffff; /* White text for skill tags */
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Fithub Development Team</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="developer-grid" id="developerGrid">
+            <!-- Developer cards will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const developers = [
+            {
+                name: "Pratham",
+                role: "Web Developer & Overseer",
+                image: "https://example.com/jane.jpg",
+                bio: "Pratham is a master of crafting responsive and intuitive user interfaces with HTML, CSS, and JavaScript. As a team leader, he meticulously oversees every essential aspect to ensure excellence.",
+                skills: ["HTML", "CSS", "JavaScript"]
+            },
+            {
+                name: "Priyanshi",
+                role: "UI/UX Designer & tester",
+                image: "https://example.com/john.jpg",
+                bio: "Priyanshi specializes in crafting intuitive user interfaces, ensuring seamless deployment, and delivering exceptional user experiences by expertly implementing HTML, JavaScript, and CSS.",
+                skills: ["HTML", "CSS", "JavaScript"]
+            },
+            {
+                name: "Poonam",
+                role: "Web Developer and Structure Designer",
+                image: "https://example.com/alice.jpg",
+                bio: "Poonam is proficient in both frontend and backend technologies, focusing on HTML, CSS, and JavaScript for web applications.",
+                skills: ["HTML", "CSS", "JavaScript"]
+            },
+            {
+                name: "Piyush",
+                role: "Website Tester and Content Integrator",
+                image: "https://example.com/bob.jpg",
+                bio: "Piyush excels in ensuring seamless deployment and maintenance of applications, leveraging HTML and CSS for efficient testing, and integrating top-tier content for an optimized user experience.",
+                skills: ["HTML", "CSS", "JavaScript"]
+            }
+        ];
+
+        const developerGrid = document.getElementById('developerGrid');
+
+        developers.forEach(dev => {
+            const card = document.createElement('div');
+            card.className = 'developer-card';
+            card.innerHTML = `
+                <img src="${dev.image}" alt="${dev.name}">
+                <h3>${dev.name}</h3>
+                <h4>${dev.role}</h4>
+                <p>${dev.bio}</p>
+                <div class="skills">
+                    ${dev.skills.map(skill => `<span class="skill">${skill}</span>`).join('')}
+                </div>
+            `;
+            developerGrid.appendChild(card);
+        });
+    </script>
+</body>
+</html>

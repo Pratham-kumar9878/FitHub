@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fithub Learn - Your Fitness Journey</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #FF5E14;
+      --primary-light: rgba(255, 94, 20, 0.1);
+      --secondary: #1A1A1A;
+      --dark: #0D0D0D;
+      --light: #F5F5F5;
+      --accent: #00C896;
+      --text: #E0E0E0;
+      --text-dark: #333;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+      --shadow-primary: 0 0 15px rgba(255, 94, 20, 0.5);
+    }
+
+    * {
+      scroll-behavior: smooth;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    @font-face {
+      font-family: 'Poppins';
+      src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #e05512;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--dark), var(--secondary));
+      padding: 1.5rem 0;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      z-index: 1000;
+      animation: slideDown 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-bottom: 1px solid rgba(255, 94, 20, 0.2);
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    #main-heading {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+    }
+
+    #main-heading::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text);
+      opacity: 0.8;
+      font-weight: 300;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: rgba(13, 13, 13, 0.95);
+      padding: 0.8rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 94, 20, 0.1);
+      transition: var(--transition);
+    }
+
+    nav.scrolled {
+      padding: 0.5rem 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      font-size: 1.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+      position: relative;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a i {
+      font-size: 0.9rem;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--secondary);
+      min-width: 200px;
+      border-radius: 0 0 8px 8px;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: var(--transition);
+      z-index: 1000;
+    }
+
+    .nav-links li:hover .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown li {
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .dropdown li:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown a {
+      padding: 0.5rem 0;
+      display: block;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 70vh;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(rgba(13, 13, 13, 0.7), rgba(13, 13, 13, 0.7)), 
+                  url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      padding: 0 2rem;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+      animation: fadeInUp 1s ease 0.2s forwards;
+      opacity: 0;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      animation: fadeInUp 1s ease 0.4s forwards;
+      opacity: 0;
+    }
+
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 94, 20, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: #e05512;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 94, 20, 0.6);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-3px);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: inline-block;
+      position: relative;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .section-title p {
+      color: var(--text);
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.8;
+    }
+
+    /* Video Section */
+    .video-section {
+      margin-bottom: 4rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      transition: var(--transition);
+    }
+
+    .video-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-section video {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--secondary);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--primary);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 1;
+    }
+
+    .card-media {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .card-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .card-media video {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+    }
+
+    .card-content p {
+      color: var(--text);
+      margin-bottom: 1.2rem;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .card-duration {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card-level {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card-level i {
+      color: var(--primary);
+    }
+
+    /* Categories */
+    .categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .category-btn {
+      padding: 0.6rem 1.5rem;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      color: var(--text);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .category-btn.active,
+    .category-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .feature-card {
+      background: var(--secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .feature-card p {
+      color: var(--text);
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: var(--secondary);
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+      border-radius: 12px;
+    }
+
+    .testimonial-slider {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .testimonial {
+      background: var(--dark);
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 1rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-content {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-author img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-info h4 {
+      color: white;
+      margin-bottom: 0.2rem;
+    }
+
+    .author-info p {
+      color: var(--text);
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      background: linear-gradient(135deg, var(--secondary), var(--dark));
+      padding: 4rem 2rem;
+      border-radius: 12px;
+      text-align: center;
+      margin: 4rem 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    .newsletter h2 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: var(--text);
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.8rem 1.2rem;
+      border: none;
+      border-radius: 50px 0 0 50px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .newsletter-form button {
+      padding: 0 1.8rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0 50px 50px 0;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .newsletter-form button:hover {
+      background: #e05512;
+    }
+
+    /* Fullscreen Video */
+    .fullscreen-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .fullscreen-video.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .fullscreen-video video {
+      width: 90%;
+      max-width: 1200px;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .close-fullscreen {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .close-fullscreen:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      padding: 4rem 2rem 2rem;
+      color: var(--text);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .footer-links a i {
+      font-size: 0.8rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--secondary);
+      border-radius: 50%;
+      color: var(--text);
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 3rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom p {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .nav-links {
+        gap: 1.5rem;
+      }
+      
+      .hero h1 {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--dark);
+        flex-direction: column;
+        padding: 2rem;
+        transition: var(--transition);
+        z-index: 1000;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+      }
+      
+      .nav-links.active {
+        right: 0;
+      }
+      
+      .nav-links li {
+        width: 100%;
+      }
+      
+      .dropdown {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      
+      .nav-links li.active .dropdown {
+        max-height: 500px;
+        margin-top: 0.5rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-form input,
+      .newsletter-form button {
+        border-radius: 50px;
+      }
+      
+      .newsletter-form input {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1 id="main-heading">Fithub Learn</h1>
+    <p class="tagline">Your Personalized Path to Fitness Excellence</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <i class="fas fa-dumbbell"></i>
+        <span>Fithub</span>
+      </a>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="#home"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="#gym"><i class="fas fa-dumbbell"></i> Gym Workouts</a>
+          <ul class="dropdown">
+            <li><a href="#back">Back Exercises</a></li>
+            <li><a href="#chest">Chest Workouts</a></li>
+            <li><a href="#biceps">Arms Training</a></li>
+            <li><a href="#legs">Leg Day</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#yoga"><i class="fas fa-spa"></i> Yoga</a>
+          <ul class="dropdown">
+            <li><a href="#vinyasa">Vinyasa Flow</a></li>
+            <li><a href="#iyengar">Iyengar Yoga</a></li>
+            <li><a href="#ashtanga">Ashtanga</a></li>
+            <li><a href="#restorative">Restorative</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#features"><i class="fas fa-star"></i> Features</a>
+        </li>
+        <li>
+          <a href="#testimonials"><i class="fas fa-quote-left"></i> Testimonials</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Transform Your Body, Elevate Your Mind</h1>
+      <p>Join thousands of members achieving their fitness goals with our expert-guided programs and personalized training plans.</p>
+      <div class="cta-buttons">
+        <a href="#gym" class="btn btn-primary">
+          <i class="fas fa-dumbbell"></i> Start Training
+        </a>
+        <a href="#yoga" class="btn btn-secondary">
+          <i class="fas fa-spa"></i> Try Yoga
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Featured Video -->
+    <div class="section-title">
+      <h2>Why Choose Fithub Learn?</h2>
+      <p>Our comprehensive approach combines fitness training with mindfulness practices for complete wellbeing.</p>
+    </div>
+    
+    <div class="video-section">
+      <video controls autoplay muted id="featured-video" poster="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
+        <source src="C:\Users\Priyanshi\Desktop\Project\intro (online-video-cutter.com) (1).mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Gym Workouts -->
+    <div class="section-title" id="gym">
+      <h2>Gym Workouts</h2>
+      <p>Professional training programs designed by certified fitness experts to help you build strength and endurance.</p>
+    </div>
+    
+    <div class="categories">
+      <button class="category-btn active">All</button>
+      <button class="category-btn">Beginner</button>
+      <button class="category-btn">Intermediate</button>
+      <button class="category-btn">Advanced</button>
+    </div>
+    
+    <div class="cards">
+      <div class="card" id="back">
+        <div class="card-badge">Popular</div>
+        <div class="card-media">
+          <video controls>
+            <source src="C:\Users\Priyanshi\Downloads\back_workout_training.mp4_1741542649354 (online-video-cutter.com).mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-content">
+          <h3>Back Workout</h3>
+          <p>Strengthen your back with pull-ups, rows, and deadlifts to improve posture and build a V-shaped torso.</p>
+          <div class="card-meta">
+            <span class="card-duration"><i class="far fa-clock"></i> 25 min</span>
+            <span class="card-level"><i class="fas fa-bolt"></i> Intermediate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="chest">
+        <div class="card-media">
+          <video controls>
+            <source src="C:\Users\Priyanshi\Downloads\chest workout (online-video-cutter.com) (2).mp4.crdownload" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-content">
+          <h3>Chest Workout</h3>
+          <p>Build your chest with bench presses, push-ups, and flys for a stronger, more defined upper body.</p>
+          <div class="card-meta">
+            <span class="card-duration"><i class="far fa-clock"></i> 30 min</span>
+            <span class="card-level"><i class="fas fa-bolt"></i> Beginner</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="biceps">
+        <div class="card-badge">New</div>
+        <div class="card-media">
+          <video controls>
+            <source src="C:\Users\Priyanshi\Downloads\biceps and triceps (online-video-cutter.com) (1).mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-content">
+          <h3>Biceps & Triceps</h3>
+          <p>Define your arms with curls, dips, and extensions for balanced arm development and functional strength.</p>
+          <div class="card-meta">
+            <span class="card-duration"><i class="far fa-clock"></i> 20 min</span>
+            <span class="card-level"><i class="fas fa-bolt"></i> All Levels</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="shoulders">
+        <div class="card-media">
+          <video controls>
+            <source src="C:\Users\Priyanshi\Downloads\shoulder (online-video-cutter.com) (1).mp4.crdownload" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-content">
+          <h3>Shoulders</h3>
+          <p>Train overhead presses and lateral raises to build strong, rounded shoulders and improve upper body stability.</p>
+          <div class="card-meta">
+            <span class="card-duration"><i class="far fa-clock"></i> 28 min</span>
+            <span class="card-level"><i class="fas fa-bolt"></i> Intermediate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="legs">
+        <div class="card-media">
+          <video controls>
+            <source src="C:\Users\Priyanshi\Downloads\leg (online-video-cutter.com) (2).mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-content">
+          <h3>Leg Workout</h3>
+          <p>Power up with squats, lunges, and deadlifts to build lower body strength and explosive power.</p>
+          <div class="card-meta">
+            <span class="card-duration"><i class="far fa-clock"></i> 35 min</span>
+            <span class="card-level"><i class="fas fa-bolt"></i> Advanced</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Yoga Section -->
+    <div class="section-title" id="yoga">
+      <h2>Yoga: Your Therapy</h2>
+      <p>Discover the transformative power of yoga for physical strength, mental clarity, and emotional balance.</p>
+    </div>
+    
+    <div class="categories">
+      <button class="category-btn active">All Styles</button>
+      <button class="category-btn">Relaxation</button>
+      <button class="category-btn">Strength</button>
+      <button class="category-btn">Flexibility</button>
+    </div>
+    
+    <div class="cards">
+      <div class="card" id="vinyasa">
+        <div class="card-media">
+          <video controls>
+            <source src="C:\Users\Priyanshi\Downloads\vinyasa (online-video-cutter.com) (1).mp4.crdownload" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-content">
+          <h3>Vinyasa Yoga</h3>
+          <p>Improve flexibility and flow through movement with this dynamic style that links breath with movement.</p>
+          <div class="card-meta">
+            <span class="card-duration"><i class="far fa-clock"></i> 40 min</span>
+            <span class="card-level"><i class="fas fa-bolt"></i> Intermediate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="iyengar">
+        <div class="card-badge">Precision</div>
+        <div class="card-media">
+          <video controls>
+            <source src="C:\Users\Priyanshi\Downloads\iyengar (online-video-cutter.com) (1).mp4.crdownload" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-content">
+          <h3>Iyengar Yoga</h3>
+          <p>Use props for perfect alignment and posture in this detail-oriented practice that emphasizes precision.</p>
+          <div class="card-meta">
+            <span class="card-duration"><i class="far fa-clock"></i> 45 min</span>
+            <span class="card-level"><i class="fas fa-bolt"></i> All Levels</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="ashtanga">
+        <div class="card-media">
+          <video controls>
+            <source src="C:\Users\Priyanshi\Desktop\Project\ashtanga (online-video-cutter.com) (1).mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-content">
+          <h3>Ashtanga Yoga</h3>
+          <p>A physically demanding, structured yoga style with a set sequence of postures to build strength and stamina.</p>
+          <div class="card-meta">
+            <span class="card-duration"><i class="far fa-clock"></i> 50 min</span>
+            <span class="card-level"><i class="fas fa-bolt"></i> Advanced</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="restorative">
+        <div class="card-badge">Relaxing</div>
+        <div class="card-media">
+          <video controls>
+            <source src="C:\Users\Priyanshi\Desktop\Project\Restorative Yoga (online-video-cutter.com) (1).mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-content">
+          <h3>Restorative Yoga</h3>
+          <p>Relax with long, restful poses supported by props to release tension and calm the nervous system.</p>
+          <div class="card-meta">
+            <span class="card-duration"><i class="far fa-clock"></i> 30 min</span>
+            <span class="card-level"><i class="fas fa-bolt"></i> Beginner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="section-title" id="features">
+      <h2>Why Our Members Love Us</h2>
+      <p>Discover what makes Fithub Learn different from other fitness platforms</p>
+    </div>
+    
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-chalkboard-teacher"></i>
+        </div>
+        <h3>Expert Instructors</h3>
+        <p>Learn from certified professionals with years of experience in fitness training and yoga instruction.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <h3>Personalized Plans</h3>
+        <p>Get customized workout plans tailored to your fitness level, goals, and schedule.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Anywhere Access</h3>
+        <p>Stream workouts on any device, anytime. Your fitness journey travels with you.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3>Community Support</h3>
+        <p>Join our vibrant community for motivation, challenges, and shared success stories.</p>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="section-title" id="testimonials">
+      <h2>Success Stories</h2>
+      <p>Hear from our members who transformed their lives with Fithub Learn</p>
+    </div>
+    
+    <div class="testimonials">
+      <div class="testimonial-slider">
+        <div class="testimonial">
+          <p class="testimonial-content">"Fithub Learn completely changed my approach to fitness. The combination of strength training and yoga helped me lose 25 pounds and gain incredible flexibility. I've never felt better!"</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J.">
+            <div class="author-info">
+              <h4>Sarah Johnson</h4>
+              <p>Member since 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter">
+      <h2>Stay Updated</h2>
+      <p>Subscribe to our newsletter for new workouts, yoga flows, and exclusive content.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Fithub Learn</h3>
+        <p>Your complete fitness solution combining gym workouts and yoga for holistic health and wellbeing.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Workouts</h3>
+        <ul class="footer-links">
+          <li><a href="#back">Back Training</a></li>
+          <li><a href="#chest">Chest Workouts</a></li>
+          <li><a href="#biceps">Arms Development</a></li>
+          <li><a href="#legs">Leg Exercises</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Yoga</h3>
+        <ul class="footer-links">
+          <li><a href="#vinyasa">Vinyasa Flow</a></li>
+          <li><a href="#iyengar">Iyengar Yoga</a></li>
+          <li><a href="#ashtanga">Ashtanga Practice</a></li>
+          <li><a href="#restorative">Restorative Yoga</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Company</h3>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Fithub Learn. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Fullscreen Video Modal -->
+  <div class="fullscreen-video" id="fullscreenVideo">
+    <span class="close-fullscreen" id="closeFullscreen">&times;</span>
+    <video controls id="fullscreenVideoContent"></video>
+  </div>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Dropdown menu for mobile
+    const navItems = document.querySelectorAll('.nav-links li');
+    navItems.forEach(item => {
+      if (item.querySelector('.dropdown')) {
+        item.addEventListener('click', (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            item.classList.toggle('active');
+          }
+        });
+      }
+    });
+    
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Category filter buttons
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Here you would filter the cards based on the selected category
+        // This would require adding data attributes to cards and implementing filtering logic
+      });
+    });
+    
+    // Fullscreen video functionality
+    const videos = document.querySelectorAll('video:not(#fullscreenVideoContent)');
+    const fullscreenVideo = document.getElementById('fullscreenVideo');
+    const fullscreenVideoContent = document.getElementById('fullscreenVideoContent');
+    const closeFullscreen = document.getElementById('closeFullscreen');
+    
+    videos.forEach(video => {
+      // Double click for desktop
+      video.addEventListener('dblclick', () => openFullscreenVideo(video));
+      
+      // Double tap for mobile
+      let lastTap = 0;
+      video.addEventListener('touchend', (e) => {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTap;
+        if (tapLength < 300 && tapLength > 0) {
+          e.preventDefault();
+          openFullscreenVideo(video);
+        }
+        lastTap = currentTime;
+      });
+    });
+    
+    function openFullscreenVideo(video) {
+      fullscreenVideoContent.src = video.querySelector('source').src;
+      fullscreenVideoContent.load();
+      fullscreenVideo.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    closeFullscreen.addEventListener('click', () => {
+      fullscreenVideo.classList.remove('active');
+      fullscreenVideoContent.pause();
+      document.body.style.overflow = '';
+    });
+    
+    // Close fullscreen when clicking outside video
+    fullscreenVideo.addEventListener('click', (e) => {
+      if (e.target === fullscreenVideo) {
+        fullscreenVideo.classList.remove('active');
+        fullscreenVideoContent.pause();
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+        }
+      });
+    });
+    
+    // Animation on scroll
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.card, .feature-card, .section-title');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+        
+        if (elementPosition < screenPosition) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+    
+    // Set initial state for animated elements
+    document.querySelectorAll('.card, .feature-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+  </script>
+</body>
+</html>

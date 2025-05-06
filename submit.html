@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FitHub Store - Buy Product</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fdfdfd;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: block;
+    }
+
+    .form-popup {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 35px 25px;
+      border-radius: 12px;
+      width: 350px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      z-index: 1000;
+      animation: popup 0.3s ease;
+      border: 1px solid #ddd;
+    }
+
+    @keyframes popup {
+      from { transform: translate(-50%, -60%) scale(0.9); opacity: 0; }
+      to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    .form-popup h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #ff6b00;
+    }
+
+    .form-popup select,
+    .form-popup input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .form-popup button {
+      background-color: #ff6b00;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 8px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .form-popup button:hover {
+      background-color: #e85d00;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #aaa;
+    }
+
+    .close-btn:hover {
+      color: #333;
+    }
+
+    /* Subtle hover effect for form popup */
+    .form-popup:hover {
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      border: 1px solid #ff6b00;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="overlay" id="overlay" onclick="closeStoreForm()"></div>
+
+  <div class="form-popup" id="storeForm">
+    <span class="close-btn" onclick="closeStoreForm()">&times;</span>
+    <h2>Buy Product</h2>
+
+    <form id="orderForm" action="/submit-order" method="POST">
+      <select name="product" required>
+        <option value="" disabled selected>Select Product</option>
+        <option value="Protein Powder">Protein Powder</option>
+        <option value="Gym Gloves">Gym Gloves</option>
+        <option value="Shaker Bottle">Shaker Bottle</option>
+        <option value="Resistance Bands">Resistance Bands</option>
+        <option value="Creatine">Creatine</option>
+        <option value="Fat Loss & Burn Appetite">Fat Loss & Burn Appetite</option>
+        <option value="Vitamins and Minerals">Vitamins and Minerals</option>
+        <option value="Pre-Workout">Pre-Workout</option>
+      </select>
+
+      <input type="number" name="quantity" placeholder="Quantity" min="1" required>
+
+      <select name="payment" required>
+        <option value="" disabled selected>Payment Method</option>
+        <option value="UPI">UPI</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Cash on Delivery">Cash on Delivery</option>
+      </select>
+
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+
+  <script>
+    function closeStoreForm() {
+      document.getElementById("storeForm").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

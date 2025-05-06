@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ultimate Guides To Protein Powders</title>
+  <style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Section Styling */
+.products-section {
+  background-color: #000; /* Black background */
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.products-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: white; /* White heading */
+}
+
+/* Card Container Styling */
+.product-cards {
+  display: flex;
+  flex-wrap: wrap; /* Ensures responsiveness */
+  justify-content: center;
+  gap: 20px; /* Space between cards */
+}
+
+/* Individual Card Styling */
+.product-card {
+  background-color: #1a1a1a; /* Dark gray for contrast */
+  border-radius: 10px;
+  width: 250px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  display: flex; /* Add flexbox to the card */
+  flex-direction: column; /* Stack content vertically */
+}
+
+.product-card:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: white; /* White product name */
+}
+
+.product-card .description {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: white; /* White description text */
+}
+
+.product-card .ratings {
+  margin-top: 5px;
+  color: yellow; /* Yellow ratings stars */
+}
+
+.product-card p.price {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: white; /* White price */
+}
+
+.product-card button.buy-now {
+  margin-top: auto; /* Push button to the bottom */
+  padding: 10px 20px;
+  background-color: orange; /* Orange button */
+  color: black; /* Black text on button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.product-card button.buy-now:hover {
+  background-color: #ff9900; /* Darker orange on hover */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .product-card {
+    width: calc(50% - 20px); /* Two cards per row on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    width: calc(100% - 20px); /* One card per row on very small screens */
+  }
+}
+
+</style>
+</head>
+<body>
+
+<section class="products-section">
+  <h1>The Ultimate Guides To Protein Powders</h1>
+  
+  <div class="product-cards" id="productCards">
+    <!-- Product cards will be dynamically added here -->
+  </div>
+
+</section>
+
+<script>
+  // Define product data
+  const products = [
+    {
+      image: "C:\Users\Priyanshi\Desktop\Project\Whey Protein Isolate Handbook.jpg",
+      name: "Whey Protein Isolate Handbook",
+      description: "Your guide to understanding and utilizing whey protein isolate for optimal muscle recovery and growth.",
+      ratings: "⭐⭐⭐⭐☆",
+      price: "Rs.499",
+    },
+    {
+      image: "C:\Users\Priyanshi\Desktop\Project\whey protein concentrate powder.jpg",
+      name: "Whey Protein Concentrate: The Complete Guide",
+      description: "Everything you need to know about whey protein concentrate for post-workout and daily protein intake.",
+      ratings: "⭐⭐⭐⭐⭐",
+      price: "Rs.399",
+    },
+    {
+      image: "",
+      name: "Casein Protein: The Nighttime Muscle Builder",
+      description: "Maximize your overnight recovery with this in-depth guide to casein protein.",
+      ratings: "⭐⭐⭐⭐☆",
+      price: "Rs.499",
+    },
+    {
+      image: "https://via.placeholder.com/250x150",
+      name: "The Soy Protein Isolate Revolution",
+      description: "Unlock the power of plant-based protein with this comprehensive guide to soy protein isolate.",
+      ratings: "⭐⭐⭐⭐⭐",
+      price: "Rs.349",
+    },
+    {
+      image: "https://via.placeholder.com/250x150",
+      name: "Pea Protein Isolate: The Vegan Powerhouse",
+      description: "Discover the benefits of highly digestible pea protein isolate for your fitness journey.",
+      ratings: "⭐⭐⭐☆☆",
+      price: "Rs.379",
+    },
+    {
+      image: "https://via.placeholder.com/250x150",
+      name: "Brown Rice Protein: The Dairy-Free Solution",
+      description: "A comprehensive guide for those with dairy sensitivities looking for a protein alternative.",
+      ratings: "⭐⭐⭐☆☆",
+      price: "Rs.799",
+    },
+    {
+      image: "https://via.placeholder.com/250x150",
+      name: "Egg White Protein: The Amino Acid Champion",
+      description: "Build muscle with the excellent amino acid profile of egg white protein.",
+      ratings: "⭐⭐⭐☆☆",
+      price: "Rs.529",
+    },
+    {
+      image: "https://via.placeholder.com/250x150",
+      name: "Vegan Protein Blends: The Complete Nutrition Guide",
+      description: "Achieve complete nutrition with this guide to vegan protein blends.",
+      ratings: "⭐⭐⭐☆☆",
+      price: "Rs.429",
+    },
+    {
+      image: "https://via.placeholder.com/250x150",
+      name: "Hydrolyzed Whey Protein: The Fast-Absorption Secret",
+      description: "Maximize immediate recovery with this fast-absorbing protein guide.",
+      ratings: "⭐⭐⭐☆☆",
+      price: "Rs.579",
+    },
+    {
+      image: "https://via.placeholder.com/250x150",
+      name: "Beef Protein Isolate: The Dairy-Intolerant's Choice",
+      description: "An alternative protein source for those with dairy intolerance.",
+      ratings: "⭐⭐⭐☆☆",
+      price: "Rs.499",
+    },
+    {
+      image: "https://via.placeholder.com/250x150",
+      name: "Protein Blends: The Sustained-Release Advantage",
+      description: "Learn how to use protein blends for sustained release and optimal muscle support.",
+      ratings: "⭐⭐⭐☆☆",
+      price: "Rs.479",
+    },
+    {
+      image: "https://via.placeholder.com/250x150",
+      name: "Micellar Casein: The Nighttime Recovery Expert",
+      description: "Enhance nighttime recovery with this slow-release protein guide.",
+      ratings: "⭐⭐⭐☆☆",
+      price: "Rs.419",
+    },
+  ];
+
+  // Function to create product card HTML
+  function createProductCard(product) {
+    return `
+      <div class="product-card">
+        <img src="${product.image}" alt="Product Image">
+        <h3>${product.name}</h3>
+        <p class="description">${product.description}</p>
+        <div class="ratings">${product.ratings}</div>
+        <p class="price">${product.price}</p>
+        <button class="buy-now">Buy Now</button>
+      </div>
+    `;
+  }
+
+  // Add event listener to buy now buttons
+  function addBuyNowListeners() {
+    const buyNowButtons = document.querySelectorAll('.buy-now');
+    buyNowButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        alert('Product purchased successfully!');
+      });
+    });
+  }
+
+  // Dynamically add product cards to the page
+  function renderProducts() {
+    const productCardsContainer = document.getElementById('productCards');
+    let html = '';
+    products.forEach(product => {
+      html += createProductCard(product);
+    });
+    productCardsContainer.innerHTML = html;
+    addBuyNowListeners(); // Add event listeners after rendering
+  }
+
+  renderProducts(); // Render products on page load
+</script>
+
+</body>
+</html>

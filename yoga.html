@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fithub Learn</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000; /* Black background */
+      transition: background-color 0.5s ease;
+      background-image: url("C:\Users\Priyanshi\Desktop\Project\backvideo.jpg");
+    }
+
+    header {
+      background-color: #333;
+      color: orangered; /* Orange-red text */
+      text-align: center;
+      padding: 20px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #main-heading {
+      color: orangered; /* Orange-red main heading */
+      transition: color 0.5s ease;
+      animation: slideIn 2s forwards;
+    }
+
+    .container {
+      max-width: 1400px; /* Increased container width */
+      margin: auto;
+      padding: 30px;
+      transition: padding 0.5s ease;
+    }
+
+    .video-section {
+      text-align: center;
+      margin-bottom: 40px;
+      transition: margin-bottom 0.5s ease;
+    }
+
+    .video-section h2 {
+      color: orangered; /* Orange-red subheading */
+      transition: color 0.5s ease;
+      animation: slideIn 2s forwards;
+    }
+
+    .video-section video {
+      width: 100%;
+      max-width: 1200px; /* Increased max video width */
+      transition: max-width 0.5s ease;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px; /* Increased gap between cards */
+      transition: gap 0.5s ease;
+    }
+
+    .card {
+      background-color: #333; /* Darker background for cards */
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      flex: 1 1 calc(33.333% - 30px); /* Adjusted flex basis */
+      padding: 20px;
+      transition: background-color 0.5s ease, padding 0.5s ease;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: orangered; /* Orange-red subheading */
+      transition: color 0.5s ease;
+      animation: slideIn 2s forwards;
+    }
+
+    .card video {
+      width: 100%;
+      height: 200px; /* Increased video height */
+      object-fit: cover;
+      border-radius: 4px;
+      transition: height 0.5s ease;
+    }
+
+    .card p {
+      color: orangered; /* Orange-red text for paragraphs */
+      transition: color 0.5s ease;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex-basis: calc(50% - 30px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        flex-basis: calc(100% - 30px);
+      }
+    }
+
+    /* Fullscreen Video Styles */
+    .fullscreen-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .fullscreen-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Hover effects */
+    .card:hover {
+      background-color: #444; /* Darker background on hover */
+    }
+
+    /* Animation for headings */
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Applying animations to headings */
+    h2.welcome {
+      animation: fadeIn 2s forwards;
+    }
+
+    h2.yoga {
+      animation: fadeIn 2s forwards;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="main-heading">Fithub Learn : Your Path Towards Fitness</h1>
+  </header>
+
+  <div class="container">
+    <!-- Video Section -->
+    <div class="video-section">
+      <h2></h2>
+      <video controls id="featured-video">
+        <source src="C:\Users\Priyanshi\Desktop\Project\intro (online-video-cutter.com).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <h2 class="welcome" style="color: orangered; text-align: center;">Welcome to Gym Workouts Learning!!</h2>
+
+    <!-- Cards Section -->
+    <div class="cards">
+      <!-- Back Workout Card -->
+      <div class="card">
+        <h3>Back Workout</h3>
+        <video controls id="back-video">
+          <source src="C:\Users\Priyanshi\Desktop\Project\back_workout_training.mp4_1741542649354.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Strengthen your back muscles with targeted exercises like pull-ups, rows, and deadlifts.</p>
+      </div>
+
+      <!-- Chest Workout Card -->
+      <div class="card">
+        <h3>Chest Workout</h3>
+        <video controls id="chest-video">
+          <source src="C:\Users\Priyanshi\Desktop\Project\chest workout (online-video-cutter.com).mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Build your chest with workouts such as bench presses, push-ups, and chest flys.</p>
+      </div>
+
+      <!-- Biceps & Triceps Card -->
+      <div class="card">
+        <h3>Biceps & Triceps</h3>
+        <video controls id="biceps-video">
+          <source src="C:\Users\Priyanshi\Desktop\Project\biceps and triceps (online-video-cutter.com).mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Tone your arms with curls, dips, and extensions for biceps and triceps strength.</p>
+      </div>
+
+      <!-- Shoulders Card -->
+      <div class="card">
+        <h3>Shoulders</h3>
+        <video controls id="shoulders-video">
+          <source src="C:\Users\Priyanshi\Desktop\Project\shoulder (online-video-cutter.com).mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Enhance shoulder mobility and strength with exercises like overhead presses and lateral raises.</p>
+      </div>
+
+      <!-- Leg Workout Card -->
+      <div class="card">
+        <h3>Leg Workout</h3>
+        <video controls id="legs-video">
+          <source src="C:\Users\Priyanshi\Desktop\Project\leg (online-video-cutter.com).mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Boost leg power with squats, lunges, and deadlifts to target major muscle groups.</p>
+      </div>
+    </div>
+
+    <h2 class="yoga" style="color: orangered; text-align: center;">Yoga: Your Therapy</h2>
+
+    <!-- Yoga Cards Section -->
+    <div class="cards">
+      <!-- Vinyasa Yoga Card -->
+      <div class="card">
+        <h3>Vinyasa Yoga</h3>
+        <video controls id="vinyasa-video">
+          <source src="C:\Users\Priyanshi\Desktop\Project\vinyasa (online-video-cutter.com).mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Improve flexibility and balance with flowing movements in Vinyasa Yoga.</p>
+      </div>
+
+      <!-- Hatha Yoga Card -->
+      <div class="card">
+        <h3>Iyengar</h3>
+        <video controls id="hatha-video">
+          <source src="C:\Users\Priyanshi\Desktop\Project\iyengar (online-video-cutter.com).mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Focus on the correct alignment of the body, making use of straps, wooden blocks, and other objects as aids in achieving the correct postures." </p>
+      </div>
+
+      <!-- Ashtanga Yoga Card -->
+      <div class="card">
+        <h3>Ashtanga Yoga</h3>
+        <video controls id="ashtanga-video">
+          <source src="C:\Users\Priyanshi\Desktop\Project\ashtanga (online-video-cutter.com).mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Engage in a fast-paced, physically demanding practice with Ashtanga Yoga.</p>
+      </div>
+
+      <!-- Restorative Yoga Card -->
+      <div class="card">
+        <h3>Restorative Yoga</h3>
+        <video controls id="restorative-video">
+          <source src= "C:\Users\Priyanshi\Desktop\Project\Restorative Yoga (online-video-cutter.com).mp4"type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Relax and rejuvenate with supportive props in Restorative Yoga.</p>
+      </div>
+    </div>
+
+    <!-- Fullscreen Video Container -->
+    <div class="fullscreen-video" id="fullscreen-video" style="display: none;">
+      <video id="fullscreen-video-content" controls></video>
+    </div>
+
+  </div>
+
+  <script>
+    // Function to play video in fullscreen
+    function playVideoFullscreen(videoElement) {
+      const fullscreenVideo = document.getElementById('fullscreen-video');
+      const fullscreenVideoContent = document.getElementById('fullscreen-video-content');
+      
+      fullscreenVideo.style.display = 'flex';
+      fullscreenVideoContent.src = videoElement.src;
+      fullscreenVideoContent.play();
+      
+      // Hide fullscreen video on close
+      fullscreenVideoContent.addEventListener('ended', () => {
+        fullscreenVideo.style.display = 'none';
+      });
+      
+      // Close fullscreen video on click outside video
+      fullscreenVideo.addEventListener('click', (e) => {
+        if (e.target !== fullscreenVideoContent) {
+          fullscreenVideo.style.display = 'none';
+        }
+      });
+    }
+
+    // Add event listeners for fullscreen playback
+    document.querySelectorAll('video').forEach(video => {
+      video.addEventListener('dblclick', () => {
+        playVideoFullscreen(video);
+      });
+    });
+
+    // Hover effects
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseover', () => {
+        card.style.background = '#444'; // Darker background on hover
+      });
+      card.addEventListener('mouseout', () => {
+        card.style.background = '#333'; // Reset background on mouse out
+      });
+    });
+  </script>
+</body>
+</html>
