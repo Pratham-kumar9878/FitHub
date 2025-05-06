@@ -176,6 +176,6 @@ function takeCommand(message) {
   }
   else if (message.includes("home")) {
     speak("Okay sir");
-    window.open("index.html")
+    window.open("Chatbot.html")
   }
 }
