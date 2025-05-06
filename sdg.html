@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitHub - Fitness for a Better World</title>
+    <style>
+         .footer-column form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .footer-column input[type="email"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.8);
+      outline: none;
+      box-sizing: border-box;
+    }
+    
+    .footer-column input[type="email"]:focus {
+      border-color: #FF6600;
+      box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.2);
+    }
+    
+    .footer-column .btn {
+      padding: 10px;
+      background-color: #FF6600;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-column .btn:hover {
+      background-color: #e65c00;
+    }
+        footer {
+      background-color:black;
+      color: white;
+      padding: 50px 0 20px;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column ul li a:hover {
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+         header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: #000000;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .header-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .logo span {
+      color: #FF6600;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links li {
+      margin-left: 20px;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #FF6600;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+   
+        :root {
+            --primary: #2ecc71;
+            --secondary: #3498db;
+            --tertiary: #9b59b6;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        } */
+        
+        /* .hero {
+            padding: 4rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        } */
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #27ae60;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--dark);
+        }
+        
+        .sdg-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .sdg-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            flex: 1 1 300px;
+            max-width: 350px;
+        }
+        
+        .sdg-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .sdg-header {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sdg-3 {
+            background-color: #4CAF50;
+        }
+        
+        .sdg-4 {
+            background-color: #2196F3;
+        }
+        
+        .sdg-9 {
+            background-color: #673AB7;
+        }
+        
+        .sdg-header img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .sdg-content {
+            padding: 1.5rem;
+        }
+        
+        .sdg-content h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .testimonials {
+            background-color: var(--light);
+            padding: 4rem 0;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            display: none;
+        }
+        
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .testimonial-controls button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            margin: 0 1rem;
+        }
+        
+        /* footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+         */
+        .footer-section {
+            flex: 1 1 300px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+        
+        /* .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        } */
+        span{
+            color: red;
+        }
+        
+        /* .social-icons a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+         */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">Fit<span>Hub</span></a>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="sdg.html">SDG Goals</a></li> 
+          <li><a href="login2.html">Login</a></li>   
+          <li><a href="muscle.html">Home</a></li>
+          <li><a href="Bmi.html">BMI Calculator</a></li>
+          <li><a href="index.html">Workouts</a></li>
+          <li><a href="fithublearn.html">E-Learning</a></li>
+          <li><a href="nutrition.html">MuscleGainPro</a></li>
+          <li><a href="project.html">Supplements</a></li>
+          <li><a href="developer.html">Developers</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+    <!-- <header>
+        <div class="header-content">
+            <nav>
+                <a href="#" class="logo">Fit<span>Hub</span></a>
+                <ul class="nav-links">
+                    <li><a href="muscle.html">Home</a></li>
+                    <li><a href="sdg.html">Our SDGs</a></li>
+                    <li><a href="fithublearn.html">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="developer.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="hero">
+                <h1>Fitness for a Better World</h1>
+                <p>Join our movement to promote health, education, and innovation while achieving your fitness goals. We're committed to supporting the United Nations Sustainable Development Goals.</p>
+                <a href="#sdgs" class="btn btn-primary">Learn About Our SDGs</a>
+                <a href="login2.html" class="btn">Join Now</a>
+            </div>
+        </div>
+    </header>
+     -->
+    <section id="sdgs">
+        <div class="container">
+            <h2 class="section-title">Our Commitment to Sustainable Development</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">At FitHub, we align our mission with three key United Nations Sustainable Development Goals to create positive change through fitness.</p>
+            
+            <div class="sdg-cards">
+                <div class="sdg-card">
+                    <div class="sdg-header sdg-3">
+                        <img src="Images/health.jpg" alt="SDG 3: Good Health and Well-Being">
+                    </div>
+                    <div class="sdg-content">
+                        <h3>Good Health and Well-Being</h3>
+                        <p>We promote physical and mental health through accessible fitness programs, nutrition guidance, and wellness resources. Our community initiatives help reduce non-communicable diseases and promote healthy lifestyles for all ages.</p>
+                    </div>
+                </div>
+                
+                <div class="sdg-card">
+                    <div class="sdg-header sdg-4">
+                        <img src="Images/edu.jpg" alt="SDG 4: Quality Education">
+                    </div>
+                    <div class="sdg-content">
+                        <h3>Quality Education</h3>
+                        <p>We provide free fitness education resources, certify trainers from underserved communities, and offer scholarships for fitness education. Our digital learning platform makes health knowledge accessible to everyone.</p>
+                    </div>
+                </div>
+                
+                <div class="sdg-card">
+                    <div class="sdg-header sdg-9">
+                        <img src="Images/infra.jpg" alt="SDG 9: Industry, Innovation and Infrastructure">
+                    </div>
+                    <div class="sdg-content">
+                        <h3>Industry, Innovation and Infrastructure</h3>
+                        <p>We develop sustainable fitness facilities, invest in green workout technologies, and support fitness startups in developing countries. Our innovation lab creates affordable fitness solutions for low-resource communities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="features" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">How We Make an Impact</h2>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🏋️</div>
+                    <h3>Community Fitness Hubs</h3>
+                    <p>We establish affordable fitness centers in underserved areas, creating jobs while promoting health.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>Digital Education</h3>
+                    <p>Our app provides free workout plans and nutrition guides to millions worldwide.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">♻️</div>
+                    <h3>Sustainable Equipment</h3>
+                    <p>We develop and distribute eco-friendly, low-cost fitness equipment made from recycled materials.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">👩‍🏫</div>
+                    <h3>Trainer Scholarships</h3>
+                    <p>We fund certification programs for aspiring trainers from disadvantaged backgrounds.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3>HubFitHub Challenges</h3>
+                    <p>Join our worldwide fitness events that raise funds for health initiatives in developing nations.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">💡</div>
+                    <h3>Innovation Grants</h3>
+                    <p>We support fitness tech startups that address health disparities in innovative ways.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Success Stories</h2>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="prerna">
+                    <h3>Prena Jha</h3>
+                    <p>"Thanks to FitHub's community program, I lost 40 pounds and reversed my prediabetes diagnosis. Now I'm training to become a certified fitness instructor through their scholarship program!"</p>
+                </div>
+                
+                <div class="testimonial">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="ashish">
+                    <h3>Ashish kumar</h3>
+                    <p>"The eco-friendly home workout kit from FitHub allowed me to start exercising even in my small apartment. I love that my fitness journey is also helping the planet."</p>
+                </div>
+                
+                <div class="testimonial">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Arvish">
+                    <h3>Diya Batra</h3>
+                    <p>"With FitHub's support, I launched a women's fitness cooperative in my village. We're improving health outcomes while creating economic opportunities for local women."</p>
+                </div>
+                
+                <div class="testimonial-controls">
+                    <button id="prev-testimonial">❮</button>
+                    <button id="next-testimonial">❯</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" style="text-align: center;">
+        <div class="container">
+            <h2 class="section-title">Join Our Movement</h2>
+            <p style="max-width: 700px; margin: 0 auto 2rem;">Whether you want to get fit, learn about health, or contribute to sustainable development, we have opportunities for you.</p>
+            <a href="#" class="btn btn-primary">Become a Member</a>
+            <a href="#" class="btn">Partner With Us</a>
+        </div>
+    </section>
+    
+    <!-- <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About FitHub</h3>
+                <p>We're a fitness organization committed to health, education, and innovation for sustainable development.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="muscle.html">Home</a></li>
+                    <li><a href="sdg.html">Our SDGs</a></li>
+                    <li><a href="fithublearn.html">Programs</a></li>
+                    <li><a href="#testimonials">Stories</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#">📱</a>
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                    <a href="#">🐦</a>
+                    <a href="#">🔗</a>
+                </div>
+                <p>info@fitHubFitHub.org</p>
+                <p>+1 (800) FIT-SDGS</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 FitHub. All rights reserved. Committed to the UN Sustainable Development Goals.</p>
+        </div>
+    </footer> 
+    -->
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FitHub</h3>
+                    <p>Your ultimate resource for fitness training, nutrition advice, and premium supplements.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/pratham_chugh_20?igsh=MWd0ZTgyNTJmYXZw"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="muscle.html">Home</a></li>
+                        <li><a href="index.html">Workouts</a></li>
+                        <li><a href="fithublearn.html">E-Learnings</a></li>
+                        <li><a href="nutrition.html">Nutrition</a></li>
+                        <li><a href="project.html">Supplements</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="submit.html">Shipping</a></li>
+                        <li><a href="developer.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get fitness tips and exclusive offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 FitHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+     
+    <script>
+        // Testimonial slider functionality
+        const testimonials = document.querySelectorAll('.testimonial');
+        const prevBtn = document.getElementById('prev-testimonial');
+        const nextBtn = document.getElementById('next-testimonial');
+        let currentTestimonial = 0;
+        
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => {
+                testimonial.classList.remove('active');
+            });
+            
+            currentTestimonial = (index + testimonials.length) % testimonials.length;
+            testimonials[currentTestimonial].classList.add('active');
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            showTestimonial(currentTestimonial - 1);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            showTestimonial(currentTestimonial + 1);
+        });
+        
+        // Auto-rotate testimonials
+        setInterval(() => {
+            showTestimonial(currentTestimonial + 1);
+        }, 5000);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

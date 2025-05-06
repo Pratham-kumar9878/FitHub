@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fithub Developers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: white;
+    }
+    footer {
+      background-color:black;
+      color: white;
+      padding: 50px 0 20px;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column ul li a:hover {
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+     /* Newsletter Form Styles */
+     .footer-column form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .footer-column input[type="email"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.8);
+      outline: none;
+      box-sizing: border-box;
+    }
+    
+    .footer-column input[type="email"]:focus {
+      border-color: #FF6600;
+      box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.2);
+    }
+    
+    .footer-column .btn {
+      padding: 10px;
+      background-color: #FF6600;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-column .btn:hover {
+      background-color: #e65c00;
+    }
+ 
+    
+    .headers {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: #000000;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .header-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+    }
+
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    .contain {
+  text-align: center;
+  margin-top: 100px; /* Adjust this value based on your header height */
+  padding: 20px;
+  color: white;
+}
+    
+    .logo span {
+      color: #FF6600;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      margin-left: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #FF6600;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    header {
+      background: black;
+      color: black;
+      padding-top: 30px;
+      min-height: 70px;
+      border-bottom: #000000 3px solid;
+    }
+
+    header h1 {
+      text-align: center;
+    }
+
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .developer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+      margin-bottom: 60px; 
+    }
+
+    .developer-card {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+      transition: transform 0.3s ease;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .developer-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(255, 87, 34, 0.8);
+    }
+
+    .developer-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .developer-card h3 {
+      margin-top: 10px;
+      color: #ff5722;
+    }
+
+    .developer-card h4 {
+      color: #ff9800;
+    }
+
+    .developer-card p {
+      margin: 10px 0;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .skill {
+      background: #ff5722;
+      color: white;
+      padding: 5px 10px;
+      margin: 5px;
+      border-radius: 5px;
+      font-size: 0.8em;
+    }
+    .main{
+      font-size: 3rem;
+    }
+    .dev{
+      color:#FF6600;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .developer-grid {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        width: 95%;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="headers">
+    <div class="header-container">
+      <a href="index.html" class="logo">Fit<span>Hub</span></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="sdg.html">SDG Goals</a></li> 
+          <li><a href="login2.html">Login</a></li>   
+          <li><a href="muscle.html">Home</a></li>
+          <li><a href="Bmi.html">BMI Calculator</a></li>
+          <li><a href="index.html">Workouts</a></li>
+          <li><a href="fithublearn.html">E-Learning</a></li>
+          <li><a href="nutrition.html">MuscleGainPro</a></li>
+          <li><a href="project.html">Supplements</a></li>
+          <li><a href="developer.html">Developers</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="contain">
+    <h1 class="main">Fit<span class="dev">Hub</span> Development Team</h1>
+  </div>
+
+  <div class="container">
+    <div class="developer-grid" id="developerGrid"></div>
+  </div>
+  <footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>FitHub</h3>
+                <p>Your ultimate resource for fitness training, nutrition advice, and premium supplements.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/pratham_chugh_20?igsh=MWd0ZTgyNTJmYXZw"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="muscle.html">Home</a></li>
+                    <li><a href="index.html">Workouts</a></li>
+                    <li><a href="fithublearn.html">E-Learnings</a></li>
+                    <li><a href="nutrition.html">Nutrition</a></li>
+                    <li><a href="project.html">Supplements</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="submit.html">Shipping</a></li>
+                    <li><a href="developer.html">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get fitness tips and exclusive offers.</p>
+                <form>
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 FitHub. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+  <script>
+    const developers = [
+      {
+        name: "Pratham",
+        role: "Web Developer & Overseer",
+        image: "Images/pratham.jpg",
+        bio: "Pratham is a master of crafting responsive and intuitive user interfaces with HTML, CSS, and JavaScript. As a team leader, he meticulously oversees every essential aspect to ensure excellence.",
+        skills: ["HTML", "CSS", "JavaScript"]
+      },
+      {
+        name: "Piyush",
+        role: "Website Tester and Content Integrator",
+        image: "Images/piyush.jpg",
+        bio: "Piyush excels in ensuring seamless deployment and maintenance of applications, leveraging HTML and CSS for efficient testing, and integrating top-tier content for an optimized user experience.",
+        skills: ["HTML", "CSS", "JavaScript"]
+      },
+      {
+        name: "Poonam",
+        role: "Web Developer and Structure Designer",
+        image: "Images/poonam.jpg",
+        bio: "Poonam is proficient in both frontend and backend technologies, focusing on HTML, CSS, and JavaScript for web applications.",
+        skills: ["HTML", "CSS", "JavaScript"]
+      },
+      {
+        name: "Priyanshi",
+        role: "UI/UX Designer & Tester",
+        image: "Images/priyanshi.jpg",
+        bio: "Priyanshi specializes in crafting intuitive user interfaces, ensuring seamless deployment, and delivering exceptional user experiences by expertly implementing HTML, JavaScript, and CSS.",
+        skills: ["HTML", "CSS", "JavaScript"]
+      }
+    ];
+
+    const developerGrid = document.getElementById('developerGrid');
+
+    developers.forEach(dev => {
+      const card = document.createElement('div');
+      card.className = 'developer-card';
+      card.innerHTML = `
+        <img src="${dev.image}" alt="Photo of ${dev.name}">
+        <h3>${dev.name}</h3>
+        <h4>${dev.role}</h4>
+        <p>${dev.bio}</p>
+        <div class="skills">
+          ${dev.skills.map(skill => `<span class="skill">${skill}</span>`).join('')}
+        </div>
+      `;
+      developerGrid.appendChild(card);
+    });
+  </script>
+</body>
+</html>

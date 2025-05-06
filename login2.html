@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fithub - Login & Signup</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      color: #FFFFFF;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    footer {
+      background-color:black;
+      color: white;
+      padding: 50px 0 20px;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column ul li a:hover {
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+ 
+    /* Header Styles */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: #000000;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .header-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .logo span {
+      color: #FF6600;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links li {
+      margin-left: 20px;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #FF6600;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    /* Main Content Styles */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 20px 80px; /* Increased padding for more space */
+    }
+    
+    /* Login Container Styles */
+    .login-container {
+      background-color: #1a1a1a;
+      border: 2px solid #FF6600;
+      border-radius: 10px;
+      padding: 30px;
+      width: 100%;
+      max-width: 350px; /* Slightly wider */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin: 40px 0; /* Added margin for more space */
+    }
+
+    h1 {
+      text-align: center;
+      color: #FF6600;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px; /* Increased spacing */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #ddd;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.8);
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="email"]:focus {
+      border-color: #FF6600;
+      box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.2);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #FF6600;
+      color: #FFFFFF;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #e65c00;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .toggle-link {
+      text-align: center;
+      margin-top: 20px;
+      color: #ddd;
+    }
+
+    .toggle-link a {
+      color: #FF6600;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .toggle-link a:hover {
+      text-decoration: underline;
+    }
+
+    .form-container {
+      display: none;
+    }
+
+    /* Newsletter Form Styles */
+    .footer-column form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .footer-column input[type="email"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.8);
+      outline: none;
+      box-sizing: border-box;
+    }
+    
+    .footer-column input[type="email"]:focus {
+      border-color: #FF6600;
+      box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.2);
+    }
+    
+    .footer-column .btn {
+      padding: 10px;
+      background-color: #FF6600;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-column .btn:hover {
+      background-color: #e65c00;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">Fit<span>Hub</span></a>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="sdg.html">SDG Goals</a></li> 
+          <li><a href="login2.html">Login</a></li>   
+          <li><a href="muscle.html">Home</a></li>
+          <li><a href="Bmi.html">BMI Calculator</a></li>
+          <li><a href="index.html">Workouts</a></li>
+          <li><a href="fithublearn.html">E-Learning</a></li>
+          <li><a href="nutrition.html">MuscleGainPro</a></li>
+          <li><a href="project.html">Supplements</a></li>
+          <li><a href="developer.html">Developers</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="login-container">
+      <h1 id="formTitle">Fithub Login</h1> 
+
+      <!-- Login Form -->
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+
+        <div class="toggle-link">
+          <span>Don't have an account? </span><a href="#" id="showSignup">Sign Up</a>
+        </div>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signupForm" class="form-container">
+        <div class="form-group">
+          <label for="newUsername">Username</label>
+          <input type="text" id="newUsername" name="newUsername" placeholder="Choose a username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="newPassword">Password</label>
+          <input type="password" id="newPassword" name="newPassword" placeholder="Create a password" required>
+        </div>
+
+        <button type="submit" class="btn">Sign Up</button>
+
+        <div class="toggle-link">
+          <span>Already have an account? </span><a href="#" id="showLogin">Login</a>
+        </div>
+      </form>
+    </div>
+  </main>
+  
+  <footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>FitHub</h3>
+                <p>Your ultimate resource for fitness training, nutrition advice, and premium supplements.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/pratham_chugh_20?igsh=MWd0ZTgyNTJmYXZw"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="muscle.html">Home</a></li>
+                    <li><a href="index.html">Workouts</a></li>
+                    <li><a href="fithublearn.html">E-Learnings</a></li>
+                    <li><a href="nutrition.html">Nutrition</a></li>
+                    <li><a href="project.html">Supplements</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="submit.html">Shipping</a></li>
+                    <li><a href="developer.html">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get fitness tips and exclusive offers.</p>
+                <form>
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 FitHub. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+  <script>
+    // Toggle Forms
+    document.getElementById('showSignup').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('signupForm').style.display = 'block';
+      document.getElementById('formTitle').innerText = 'Fithub Signup';
+    });
+
+    document.getElementById('showLogin').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('formTitle').innerText = 'Fithub Login';
+    });
+
+    // Signup Form Handler
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const newUsername = document.getElementById('newUsername').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const newPassword = document.getElementById('newPassword').value.trim();
+
+      if (newUsername && email && newPassword) {
+        const user = {
+          username: newUsername,
+          email: email,
+          password: newPassword
+        };
+
+        localStorage.setItem('fithubUser', JSON.stringify(user));
+
+        alert('Signup Successful! Welcome ' + newUsername);
+        this.reset();
+
+        // Switch to login form
+        document.getElementById('signupForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('formTitle').innerText = 'Fithub Login';
+      } else {
+        alert('Please fill in all fields.');
+      }
+    });
+
+    // Login Form Handler
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const storedUser = JSON.parse(localStorage.getItem('fithubUser'));
+
+      if (
+        storedUser &&
+        username === storedUser.username &&
+        password === storedUser.password
+      ) {
+        alert('Login Successful! Welcome back, ' + username);
+        
+        // Debugging - Check if the redirect code is being triggered
+        console.log("Redirecting to muscle.html");
+
+        // Redirect to workout page after successful login
+        window.location.href = 'muscle.html';  // This redirects to muscle.html
+      } else {
+        alert('Invalid Username or Password!');
+      }
+    });
+  </script>
+</body>
+</html>
