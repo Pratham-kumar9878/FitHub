@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitHub - Ultimate Fitness Resource</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Global Styles ===== */
+        :root {
+            --primary: #ff4d4d;
+            --secondary: #2c3e50;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --accent: #ff9966;
+            --gradient: linear-gradient(45deg, var(--primary), var(--accent));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration: none;
+            color:black;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 15px auto 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 77, 77, 0.4);
+        }
+        
+        /* ===== Header & Navigation ===== */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+        }
+        
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            z-index: 1001;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Mobile Menu Styles */
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 80px 20px 20px;
+            animation: fadeInDown 0.5s ease;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nav-links.active li {
+            margin: 15px 0;
+            padding: 10px 20px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .nav-links.active a {
+            display: block;
+            padding: 15px 0;
+            font-size: 1.2rem;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Prevent horizontal scrolling */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* Better touch feedback */
+        .nav-links a {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* ===== Hero Section ===== */
+        .hero {
+            height: 100vh;
+            background: url('Images/gym4.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+        
+        .hero .btn {
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+        
+        /* ===== Workouts Section ===== */
+        .workouts {
+            background-color: white;
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .program-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .program-card-content {
+            padding: 20px;
+        }
+        
+        .program-card h3 {
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .program-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .program-card .btn {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== Exercises Section ===== */
+        .exercises {
+            background-color: #f8f9fa;
+        }
+        
+        .exercise-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gradient);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .exercise-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .exercise-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .exercise-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .exercise-card-content {
+            padding: 15px;
+        }
+        
+        .exercise-card h3 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .exercise-card .muscle-group {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #f0f0f0;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        /* ===== Nutrition Section ===== */
+        .nutrition {
+            background: white;
+        }
+        
+        .meal-plans {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scroll-snap-type: x mandatory;
+        }
+        
+        .meal-plan {
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            scroll-snap-align: start;
+        }
+        
+        .meal-plan img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .meal-plan-content {
+            padding: 20px;
+        }
+        
+        .meal-plan h3 {
+            margin-bottom: 10px;
+        }
+        
+        .meal-plan .calories {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        /* ===== Supplements Section ===== */
+        .supplements {
+            background-color: #f8f9fa;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .product-card-content {
+            padding: 15px;
+        }
+        
+        .product-card h3 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .product-card .price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-card .rating {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 8px 0;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--primary);
+        }
+        
+        /* ===== Footer ===== */
+        footer {
+            background-color:black;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== Animations ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ===== Responsive Styles ===== */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .nav-links.active {
+                padding-top: 100px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .nav-links.active a {
+                font-size: 1rem;
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">Fit<span>Hub</span></a>
+            
+            <nav>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="sdg.html">SDG Goals</a></li>
+                    <li><a href="login2.html">Login</a></li>
+                    <li><a href="muscle.html">Home</a></li>
+                    <li><a href="Bmi.html">BMI Calculator</a></li>
+                    <li><a href="Chatbot.html">Workouts</a></li>
+                    <li><a href="fithublearn.html">E-Learning</a></li>
+                    <li><a href="nutrition.html">MuscleGainPro</a></li>
+                    <li><a href="project.html">Supplements</a></li>
+                    <li><a href="developer.html">Developers</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Rest of your HTML content remains the same -->
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="container">
+                <h1>TRANSFORM YOUR BODY, ELEVATE YOUR LIFE</h1>
+                <p>Access premium workout programs, expert nutrition advice, and top-quality supplements to help you reach your fitness goals faster.</p>
+                <a href="fithublearn.html" class="btn">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workouts Section -->
+    <section class="workouts" id="workouts">
+        <div class="container">
+            <h2 class="section-title">Supplements Guidance Bookstore</h2>
+            
+            <div class="programs-grid">
+                <!-- Program 1 -->
+                <div class="program-card">
+                    <img src="Images/Whey Protein Isolate Handbook.jpg" alt="Beginner Workout">
+                    <div class="program-card-content">
+                        <h3>Protein Guidance Books</h3>
+                        <p>Perfect for those new to fitness. Build strength and confidence with this store with guidance.</p>
+                        <a href="proteinguide.html" class="btn">View Program</a>
+                    </div>
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="program-card">
+                    <img src="Images/science of pre-workout supplement.jpg" alt="Muscle Building">
+                    <div class="program-card-content">
+                        <h3>Pre-Workout Guidance Books</h3>
+                        <p>Pre-Workout Guide: Science-Backed Tips to Boost Energy, Focus, Endurance & Results.</p>
+                        <a href="PreWorkoutGuide.html" class="btn">View Program</a>
+                    </div>
+                </div>
+                
+                <!-- Program 3 -->
+                <div class="program-card">
+                    <img src="Images/creatine handbook.jpg" alt="Fat Loss">
+                    <div class="program-card-content">
+                        <h3>Creatine Guidance Books</h3>
+                        <p>Creatine Benefits: How This Proven Supplement Boosts Muscle, Strength & Endurance.</p>
+                        <a href="creatineguide.html" class="btn">View Program</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exercises Section -->
+    <section class="exercises" id="exercises">
+        <div class="container">
+            <h2 class="section-title">Exercise Database</h2>
+            
+            
+            <div class="exercise-filters">
+                <button class="filter-btn active"><a href="allworkout.html">All</a></button>
+                <button class="filter-btn"><a href="chest.html">Chest</a></button>
+                <button class="filter-btn"><a href="back.html">Back</a></button>
+                <button class="filter-btn"><a href="leg.html">Legs</a></button>
+                <button class="filter-btn"><a href="biceptricep.html">BicepTricep</a></button>
+                <button class="filter-btn"><a href="shoulders.html">Shoulders</a></button>
+                <!-- <button class="filter-btn">Core</button> -->
+            </div>
+            
+            <div class="exercise-grid">
+                <!-- Exercise 1 -->
+                <div class="exercise-card">
+                    <img src="Images/bench.jpg" alt="Bench Press">
+                    <div class="exercise-card-content">
+                        <h3>Bench Press</h3>
+                        <span class="muscle-group">Chest</span>
+                        <p>The ultimate upper body strength builder.</p>
+                        <a href="Images/chest workout (online-video-cutter.com).mp4" class="btn">View Exercise</a>
+                    </div>
+                </div>
+                
+                <!-- Exercise 2 -->
+                <div class="exercise-card">
+                    <img src="Images/squat.jpg" alt="Squat">
+                    <div class="exercise-card-content">
+                        <h3>Barbell Squat</h3>
+                        <span class="muscle-group">Legs</span>
+                        <p>The king of lower body exercises.</p>
+                        <a href="Images/leg (online-video-cutter.com).mp4" class="btn">View Exercise</a>
+                    </div>
+                </div>
+                
+                <!-- Exercise 3 -->
+                <div class="exercise-card">
+                    <img src="Images/motivation.jpg" alt="Deadlift">
+                    <div class="exercise-card-content">
+                        <h3>Deadlift</h3>
+                        <span class="muscle-group">Back</span>
+                        <p>Build total-body strength and power.</p>
+                        <a href="Images/back_workout_training.mp4_1741542649354.mp4" class="btn">View Exercise</a>
+                    </div>
+                </div>
+                
+                <!-- Exercise 4 -->
+                <div class="exercise-card">
+                    <img src="Images/backgym.jpg" alt="Pull-Up">
+                    <div class="exercise-card-content">
+                        <h3>Lat Pulldown</h3>
+                        <span class="muscle-group">Back</span>
+                        <p>The ultimate bodyweight back exercise.</p>
+                        <a href="Images/back_workout_training.mp4_1741542649354.mp4" class="btn">View Exercise</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition Section -->
+    <section class="nutrition" id="nutrition">
+        <div class="container">
+            <h2 class="section-title">Nutrition Plans</h2>
+            
+            <div class="meal-plans">
+                <!-- Plan 1 -->
+                <div class="meal-plan">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="Muscle Gain Meal Plan">
+                    <div class="meal-plan-content">
+                        <h3>Muscle Gain</h3>
+                        <p class="calories">3,000+ Calories/Day</p>
+                        <p>High-protein meals to support muscle growth and recovery.</p>
+                        <a href="nutrition.html" class="btn">View Plan</a>
+                    </div>
+                </div>
+                
+                <!-- Plan 2 -->
+                <div class="meal-plan">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fat Loss Meal Plan">
+                    <div class="meal-plan-content">
+                        <h3>Fat Loss</h3>
+                        <p class="calories">1,800-2,200 Calories/Day</p>
+                        <p>Calorie-controlled meals to maximize fat burning.</p>
+                        <a href="fatloss.html" class="btn">View Plan</a>
+                    </div>
+                </div>
+                
+                <!-- Plan 3 -->
+                <div class="meal-plan">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Vegan Meal Plan">
+                    <div class="meal-plan-content">
+                        <h3>Plant-Based</h3>
+                        <p class="calories">2,400-2,800 Calories/Day</p>
+                        <p>Nutrient-dense vegan meals for optimal performance.</p>
+                        <a href="plantbased.html" class="btn">View Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supplements Section -->
+    <section class="supplements" id="supplements">
+        <div class="container">
+            <h2 class="section-title">Premium Supplements</h2>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="Images/whey protein isolate powder.jpg" alt="Whey Protein">
+                    <div class="product-card-content">
+                        <h3>Whey Protein Isolate</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(124)</span>
+                        </div>
+                        <p class="price"><span>&#8377;</span>5499</p>
+                        <a href="submit.html"><button class="add-to-cart">Add to Cart</button></a>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="Images/pre-workout capsules-with creatine.jpg" alt="Pre-Workout">
+                    <div class="product-card-content">
+                        <h3>Pre-Workout Energizer</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(89)</span>
+                        </div>
+                        <p class="price"><span>&#8377;</span>649</p>
+                        <a href="submit.html"><button class="add-to-cart">Add to Cart</button></a>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="Images/Vitamin C tablets.jpg" alt="BCAAs">
+                    <div class="product-card-content">
+                        <h3>Vitamins&Minerals</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(156)</span>
+                        </div>
+                        <p class="price"><span>&#8377;</span>359</p>
+                        <a href="submit.html"><button class="add-to-cart">Add to Cart</button></a>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <img src="Images/creatine and muscle growth.jpg" alt="Creatine">
+                    <div class="product-card-content">
+                        <h3>Creatine Monohydrate</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(210)</span>
+                        </div>
+                        <p class="price"><span>&#8377;</span>539</p>
+                        <a href="submit.html"><button class="add-to-cart">Add to Cart</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FitHub</h3>
+                    <p>Your ultimate resource for fitness training, nutrition advice, and premium supplements.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/pratham_chugh_20?igsh=MWd0ZTgyNTJmYXZw"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="muscle.html">Home</a></li>
+                        <li><a href="index.html">Workouts</a></li>
+                        <li><a href="fithublearn.html">E-Learnings</a></li>
+                        <li><a href="nutrition.html">Nutrition</a></li>
+                        <li><a href="project.html">Supplements</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="submit.html">Shipping</a></li>
+                        <li><a href="developer.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get fitness tips and exclusive offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 FitHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-times');
+            icon.classList.toggle('fa-bars');
+            
+            // Prevent body scrolling when menu is open
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 992) { // Match your mobile breakpoint
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        // Exercise Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Filter logic would go here
+                // This is just a placeholder for the actual filtering functionality
+            });
+        });
+        
+        // Add to Cart Animation
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Animation/feedback when adding to cart
+                this.textContent = 'Added!';
+                this.style.backgroundColor = '#4CAF50';
+                
+                setTimeout(() => {
+                    this.textContent = 'Add to Cart';
+                    this.style.backgroundColor = '';
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
