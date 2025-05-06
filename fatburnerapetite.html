@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fat Burners & Appetite Suppressants - FitHub</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      color: #FFFFFF;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header Styles */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: #000000;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .header-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .logo span {
+      color: #FF6600;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links li {
+      margin-left: 20px;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #FF6600;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    /* Main Content Styles */
+    main {
+      flex: 1;
+      padding: 120px 20px 80px;
+    }
+
+    /* Product Section */
+    .products-section {
+      background-color: #000;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    
+    .products-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #FF6600;
+    }
+    
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .product {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      width: 250px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(255, 69, 0, 0.3);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .product:hover {
+      transform: translateY(-5px);
+    }
+    
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    
+    .product h3 {
+      font-size: 1.2rem;
+      margin: 10px 0;
+      color: white;
+    }
+    
+    .product p {
+      font-size: 0.9rem;
+      color: #ddd;
+      margin: 5px 0;
+    }
+    
+    .stars {
+      color: gold;
+      font-size: 1.2rem;
+    }
+    
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 5px 0;
+      color: white;
+    }
+    
+    .buy-btn {
+      display: inline-block;
+      padding: 8px 15px;
+      background-color: orangered;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .buy-btn:hover {
+      background-color: red;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: black;
+      color: white;
+      padding: 50px 0 20px;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column ul li a:hover {
+      color: #FF6600;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: #FF6600;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .product {
+        width: calc(50% - 20px);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .product {
+        width: calc(100% - 20px);
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">Fit<span>Hub</span></a>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="sdg.html">SDG Goals</a></li> 
+          <li><a href="login2.html">Login</a></li>   
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Bmi.html">BMI Calculator</a></li>
+          <li><a href="Chatbot.html">Workouts</a></li>
+          <li><a href="fithublearn.html">E-Learning</a></li>
+          <li><a href="nutrition.html">MuscleGainPro</a></li>
+          <li><a href="project.html">Supplements</a></li>
+          <li><a href="developer.html">Developers</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="products-section">
+      <h1>Fat Burners & Appetite Suppressants</h1>
+      
+      <div class="product-container">
+        <div class="product">
+          <img src="Images/L-Carnitine supplement bottle.jpg" alt="L-Carnitine Capsules">
+          <h3>L-Carnitine Capsules</h3>
+          <p>Supports fat metabolism and energy production</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹1999</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+          <img src="Images/Green Tea Extract supplement bottle.jpg" alt="Green Tea Extract Capsules">
+          <h3>Green Tea Extract Capsules</h3>
+          <p>Boosts metabolism and provides antioxidant benefits</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹1599</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+          <img src="Images/Iron Biglycinate Capsules.jpg" alt="CLA Softgels">
+          <h3>CLA Softgels</h3>
+          <p>Supports fat loss and lean muscle mass.</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹2399</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+          <img src="Images/Garcinia Cambogia supplement bottle.jpg" alt="Garcinia Cambogia Capsules">
+          <h3>Garcinia Cambogia Capsules</h3>
+          <p>Helps suppress appetite and block fat production.</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹1439</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+          <img src="Images/Raspberry Ketone supplement bottle.jpg" alt="Raspberry Ketone Capsules">
+          <h3>Raspberry Ketone Capsules</h3>
+          <p>Supports fat burning and weight loss.</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹1839</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+          <img src="Images/Caffeine Anhydrous supplement bottle.jpg" alt="Caffeine Anhydrous Tablets">
+          <h3>Caffeine Anhydrous Tablets</h3>
+          <p>Increases energy and enhances fat loss.</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹799</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+          <img src="Images/Yohimbine Hcl supplement bottle.jpg" alt="Yohimbine Hcl Capsules">
+          <h3>Yohimbine Hcl Capsules</h3>
+          <p>Promotes fat burning and enhances athletic performance</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹2799</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+          <img src="Images/5-HTP supplement bottle.jpg" alt="5-HTP Capsules">
+          <h3>5-HTP Capsules</h3>
+          <p>Helps control appetite and improve mood.</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹1279</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+          <img src="Images/Glucomannan supplement bottle.jpg" alt="Glucomannan Powder">
+          <h3>Glucomannan Powder</h3>
+          <p>Promotes satiety and supports healthy weight management</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹1519</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+          <img src="Images/Apple Cider Vinegar supplement bottle.jpg" alt="Apple Cider Vinegar Capsules">
+          <h3>Apple Cider Vinegar Capsules</h3>
+          <p>Supports weight loss and improves digestion.</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹1039</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+          <img src="Images/Forskolin supplement bottle.jpg" alt="Forskolin Capsules">
+          <h3>Forskolin Capsules</h3>
+          <p>Supports fat burning and increases metabolism.</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹2239</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+          <img src="Images/Lipoic Acid supplement bottle.jpg" alt="Lipoic Acid Capsules">
+          <h3>Lipoic Acid Capsules</h3>
+          <p>Supports metabolism and provides antioxidant protection.</p>
+          <div class="stars">★★★★★</div>
+          <p class="price">₹1839</p>
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>FitHub</h3>
+                <p>Your ultimate resource for fitness training, nutrition advice, and premium supplements.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/pratham_chugh_20?igsh=MWd0ZTgyNTJmYXZw"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Chatbot.html">Workouts</a></li>
+                    <li><a href="fithublearn.html">E-Learnings</a></li>
+                    <li><a href="nutrition.html">Nutrition</a></li>
+                    <li><a href="project.html">Supplements</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="submit.html">Shipping</a></li>
+                    <li><a href="developer.html">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get fitness tips and exclusive offers.</p>
+                <form>
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 FitHub. All rights reserved.</p>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    // Add any JavaScript functionality here if needed
+    
+  </script>
+</body>
+</html>

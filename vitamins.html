@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      color: #FFFFFF;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header Styles */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: #000000;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .header-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .logo span {
+      color: #FF6600;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links li {
+      margin-left: 20px;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #FF6600;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    /* Main Content Styles */
+    main {
+      flex: 1;
+      padding: 120px 20px 80px; /* Increased padding for more space */
+    }
+    
+    /* Footer Styles */
+    footer {
+      background-color:black;
+      color: white;
+      padding: 50px 0 20px;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column ul li a:hover {
+      color: #FF6600;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: #FF6600;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Original Styles */
+    body {
+        background-image: url("");
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color:#fff;
+        color: #fff;
+        text-align: center;
+    }
+    a{
+        text-decoration: none;
+        color:black;
+    }
+    /* Categorie*/
+    .categories {
+        margin: 40px auto;
+        max-width: 800px;
+    }
+    
+    .categories h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    .category {
+        background-color: #222;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .category:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Icons */
+    .icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    /* Category Buttons */
+    .category-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 1.2rem;
+        background: orange;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    
+    .category-btn:hover {
+        background: #ff8c00;
+    }
+    h2 {
+        margin-top: 40px;
+        font-size: 28px;
+    }
+    .products, .benefits {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .product, .benefit {
+        background: rgba(255, 255, 255, 0.1);
+        margin: 15px;
+        padding: 20px;
+        border-radius: 8px;
+        width: 300px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .product:hover, .benefit:hover {
+        background:#ff8c00;
+        transform: scale(1.05);
+    }
+    * Banner Section */
+    /* .main-banner {
+        position: relative;
+        text-align: center;
+        height: 300px;
+        overflow: hidden;
+    }
+    
+    .main-banner img {
+        width: 100%;
+        height: auto;
+        opacity: 0.7;
+        object-fit: cover;
+        animation: zoomIn 5s infinite alternate;
+    } */
+    .main-banner {
+        position: relative;
+        width: 100vw; /* Full width of the viewport */
+        height: 100vh; /* Full height of the viewport */
+        overflow: hidden;
+    }
+    
+    .main-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image covers the screen without distortion */
+    }
+    
+    .main-banner .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Optional: Dark overlay */
+    }
+    
+    
+    /* Knowledge Section */
+    .supplement-knowledge {
+        padding: 40px 20px;
+    }
+    
+    .knowledge-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .knowledge-card {
+        background: rgba(255, 98, 0, 0.2);
+        padding: 20px;
+        width: 80%;
+        max-width: 300px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .knowledge-card:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(255, 98, 0, 0.8);
+    }
+    
+    /* Buttons */
+    .btn-hover {
+        background: linear-gradient(45deg, #ff6200, #ff9100);
+        border: none;
+        padding: 10px 15px;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s;
+        border-radius: 5px;
+    }
+    
+    .btn-hover:hover {
+        background: linear-gradient(45deg, #ff9100, #ff6200);
+        transform: scale(1.1);
+    }
+    
+    /* Testimonial Section */
+    .testimonial {
+        padding: 40px 20px;
+    }
+    
+    /* Glowing Effect */
+    .glow {
+        animation: glowAnimation 2s infinite alternate;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    
+    @keyframes zoomIn {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.05); }
+    }
+    
+    @keyframes glowAnimation {
+        0% { box-shadow: 0 0 10px rgba(255, 98, 0, 0.5); }
+        100% { box-shadow: 0 0 20px rgba(255, 98, 0, 1); }
+    }
+    
+    @keyframes slide-up {
+        0% { transform: translateY(50px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    /* Full Page Background */
+    
+    
+    /* Numbering */
+    .number {
+        background: linear-gradient(90deg, #ff9800, #ff3d00);
+        box-shadow: 0px 0px 15px rgba(255, 165, 0, 0.8);
+    }
+    
+    /* Main Title */
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 3px;
+        background: linear-gradient(90deg, #ff9800, #ff3d00);
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: bounceIn 1.2s ease-in-out;
+    }
+    
+    /* Content Section */
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* .container {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 50px 0;
+        background: url('https://i.pinimg.com/736x/cf/26/8e/cf268eceb9ff70398f2131cc2146ff12.jpg') no-repeat center center/cover;
+        opacity: 0.5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    } */
+    
+    .overlay {
+        background: rgba(0, 0, 0, 0.9);
+        padding: 30px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 900px;
+    }
+    
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .item {
+        margin: 20px 0;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        width: 90%;
+        max-width: 600px;
+        transition: transform 0.5s ease;
+        opacity: 0;
+    }
+    
+    .item:hover {
+        transform: scale(1.08);
+    }
+    /* Number Glow Effect */
+    .number:hover {
+        transform: scale(1.2);
+        box-shadow: 0px 0px 25px rgba(255, 165, 0, 1);
+    }
+    
+    /* Add Hover Effects */
+    .item:hover {
+        transform: scale(1.08) rotate(1deg);
+        box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Watermark */
+    .watermark {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 12px;
+        color: white;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 6px 12px;
+        border-radius: 8px;
+        animation: fadeIn 2s ease-in-out;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes bounceIn {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        80% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    
+    /* Fade-in Effect */
+    .fade-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
+    /* Container */
+    .container_1 {
+     
+        padding: 50px 20px;
+        animation: fadeIn 1.5s ease-in-out;
+        max-width: 900px;
+        margin:auto;
+        margin-top:20px;
+    }
+    
+    /* Glowing Text */
+    .glow-text {
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: orange;
+        text-shadow: 0 0 10px orange, 0 0 20px #ff3d00;
+        animation: glowEffect 1.5s infinite alternate;
+    }
+    
+    /* Pyramid Levels */
+    .pyramid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+        position: relative;
+        gap: 15px;
+    }
+    
+    /* Neon Effect for Each Level */
+    .pyramid-level {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        border: 3px solid orange;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        color: white;
+        text-shadow: 0px 0px 10px rgba(255, 165, 0, 0.7);
+        border-radius: 10px;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    
+    /* Different Widths for Levels */
+    .level-1 {
+        width: 20%;
+    }
+    .level-2 {
+        width: 40%;
+    }
+    .level-3 {
+        width: 60%;
+    }
+    
+    /* Glow on Hover */
+    .pyramid-level:hover {
+        transform: scale(1.1) rotate(2deg);
+        box-shadow: 0 0 20px orange, 0 0 30px #ff3d00;
+    }
+    
+    /* Number Styling */
+    .level-number {
+        font-weight: bold;
+        margin-right: 10px;
+        font-size: 1.5rem;
+        color: black;
+        background: orange;
+        padding: 5px 12px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 15px rgba(255, 165, 0, 0.8);
+        transition: 0.3s;
+    }
+    
+    /* Hover Effect for Numbers */
+    .level-number:hover {
+        transform: scale(1.2);
+        box-shadow: 0px 0px 25px rgba(255, 165, 0, 1);
+    }
+    
+    /* Description Styling */
+    .description {
+        margin-top: 20px;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 300;
+        animation: fadeIn 2s ease-in-out;
+        max-width: 700px;
+        margin: auto;
+    }
+    
+    /* Keyframe Animations */
+    @keyframes glowEffect {
+        from {
+            text-shadow: 0 0 10px orange, 0 0 20px #ff3d00;
+        }
+        to {
+            text-shadow: 0 0 20px orange, 0 0 40px #ff3d00;
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background: black;
+    
+        color: white;
+        text-align: center;
+        margin: 0;
+    }
+    
+    /* Container */
+    .container_2 {
+        padding: 50px 20px;
+    }
+    
+    /* Title */
+    .title {
+        font-size: 36px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        animation: fadeIn 2s ease-in-out;
+    }
+    
+    /* Product Grid */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+    
+    /* Product Card */
+    .product-card {
+        background: #111;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        transform: translateY(50px);
+        opacity: 0;
+        transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    }
+    
+    /* Image */
+    .product-card img {
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    /* Hover Effect */
+    .product-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 15px #ff4500;
+    }
+    
+    /* Buy Button */
+    .buy-btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background: #ff4500;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+    
+    .buy-btn:hover {
+        background: #ff6500;
+    }
+    
+    /* Scroll Animation */
+    .show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    /* Keyframes */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    /* General Page Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #0d0d0d;
+        color: white;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    
+    header {
+        padding: 20px;
+        background-color: #1a1a1a;
+    }
+    
+    h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+    
+    /* Product Container */
+    .container_2 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    /* Individual Product Box */
+    .product {
+        background-color: #1a1a1a;
+        border-radius: 10px;
+        width: 250px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(255, 69, 0, 0.3);
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .product:hover {
+        transform: translateY(-5px);
+    }
+    img {
+        width: 100%;
+        height: 200px; 
+        object-fit: cover; 
+        border-radius: 5px;
+    }
+    /* Product Images */
+    .product img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+    
+    /* Product Title */
+    .product h3 {
+        font-size: 1.2rem;
+        margin: 10px 0;
+    }
+    
+    /* Star Ratings */
+    .stars {
+        color: gold;
+        font-size: 1.2rem;
+    }
+    
+    /* Price */
+    .product p {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+    
+    /* Buy Now Button */
+    .buy-btn {
+        display: inline-block;
+        padding: 8px 15px;
+        background-color: orangered;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .buy-btn:hover {
+        background-color: red;
+    }
+    
+    .products-section {
+        background-color: #000;
+        padding: 40px 20px;
+        text-align: center;
+      }
+      
+      .products-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: white;
+      }
+      
+      .product-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+      
+      .product-card {
+        background-color: #1a1a1a;
+        border-radius: 10px;
+        width: 250px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .product-card:hover {
+        transform: scale(1.05);
+      }
+      
+      .product-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+      
+      .product-card h3 {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        color: white;
+      }
+      
+      .product-card .description {
+        font-size: 0.9rem;
+        margin-top: 5px;
+        color: white;
+      }
+      
+      .product-card .ratings {
+        margin-top: 5px;
+        color: yellow;
+      }
+      
+      .product-card p.price {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-top: 10px;
+        color: white;
+      }
+      
+      .product-card button.buy-now {
+        margin-top: auto;
+        padding: 10px 20px;
+        background-color: orangered;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      
+      .product-card button.buy-now:hover {
+        background-color: red;
+      }
+      
+      @media (max-width: 768px) {
+        .product-card {
+          width: calc(50% - 20px);
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .product-card {
+          width: calc(100% - 20px);
+        }
+      }
+    /* Footer Styling */
+    footer {
+        background: #1a1a1a;
+        padding: 20px 0;
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    /* Back to Top Button */
+    .foot-panel1 {
+        background: #ff6a00;
+        padding: 12px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    
+    .foot-panel1:hover {
+        background: #ff9100;
+        transform: scale(1.05);
+    }
+    
+    /* Footer Links Section */
+    .foot-panel2 {
+        display: flex;
+        justify-content: space-around;
+        padding: 25px 10px;
+        flex-wrap: wrap;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .foot-panel2 ul {
+        list-style: none;
+        padding: 0;
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .foot-panel2 ul:hover {
+        transform: translateY(-5px);
+    }
+    
+    .foot-panel2 p {
+        font-weight: bold;
+        font-size: 18px;
+        color: #ff6a00;
+        margin-bottom: 10px;
+        transition: color 0.3s ease-in-out;
+    }
+    
+    .foot-panel2 a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+        padding: 5px 0;
+        transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    }
+    
+    .foot-panel2 a:hover {
+        color: #ff6a00;
+        transform: translateX(5px);
+    }
+    
+    /* Logo Section */
+    .foot-panel3 {
+        margin: 20px 0;
+    }
+    
+    .foot-panel3 .logo {
+        width: 120px;
+        height: 50px;
+        background: url('your-logo.png') no-repeat center;
+        background-size: contain;
+        margin: 0 auto;
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .foot-panel3 .logo:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Pages & Copyright Section */
+    .foot-panel4 {
+        background: #0d0d0d;
+        padding: 15px 0;
+        font-size: 14px;
+    }
+    
+    .pages a {
+        color: #ff6a00;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s ease-in-out;
+    }
+    
+    .pages a:hover {
+        color: #ff9100;
+    }
+    
+    .copyright {
+        margin-top: 10px;
+        color: #aaa;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    
+    @keyframes glowEffect {
+        0% { text-shadow: 0 0 5px #ff6a00; }
+        100% { text-shadow: 0 0 15px #ff9100; }
+    }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">Fit<span>Hub</span></a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="sdg.html">SDG Goals</a></li> 
+                    <li><a href="login2.html">Login</a></li>   
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Bmi.html">BMI Calculator</a></li>
+                    <li><a href="Chatbot.html">Workouts</a></li>
+                    <li><a href="fithublearn.html">E-Learning</a></li>
+                    <li><a href="nutrition.html">MuscleGainPro</a></li>
+                    <li><a href="project.html">Supplements</a></li>
+                    <li><a href="developer.html">Developers</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>Vitamins & Minerals Supplements</h1>
+        
+        <section class="container_2">
+            <div class="product">
+                <img src="Images/multivitamin capsules.jpg" alt="Multivitamin Capsules">
+            <h3>Multivitamin Capsules</h3>
+            <p>A comprehensive blend of essential vitamins and minerals for overall health.</p>
+            <div class="stars">★★★★★</div>
+            <p>₹2499.17</p>
+            <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="Images/vitamin D3 softgels.jpg" alt="Vitamin D3 Softgels">
+            <h3>Vitamin D3 Softgels</h3>
+            <p>Supports bone health and immune function.</p>
+            <div class="stars">★★★★★</div>
+            <p>₹1078.17</p>
+            <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="Images/Vitamin C tablets.jpg" alt="Vitamin C Tablets">
+            <h3>Vitamin C Tablets</h3>
+            <p>Boosts immunity and provides antioxidant protection.</p>
+            <div class="stars">★★★★★</div>
+            <p>₹829.17</p>
+            <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="Images/B-Complex Capsules.jpg" alt="B-Complex Capsules">
+            <h3>B-Complex Capsules</h3>
+            <p>Supports energy production and nervous system health.</p>
+            <div class="stars">★★★★★</div>
+            <p>₹1244.17</p>
+            <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="Images/Omega-3 Fish Oil Softgels.jpg" alt="Omega-3 Fish Oil Softgels">
+            <h3>Omega-3 Fish Oil Softgels</h3>
+            <p>Supports heart health and reduces inflammation.</p>
+            <div class="stars">★★★★★</div>
+            <p>₹1664.17</p>
+            <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="Images/Calcium with Vitamin K2 Capsules.jpg" alt="Calcium with Vitamin K2 Capsules">
+            <h3>Calcium with Vitamin K2 Capsules</h3>
+            <p>Supports strong bones and cardiovascular health.</p>
+            <div class="stars">★★★★★</div>
+            <p>₹1415.17</p>
+            <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="Images/Magnesium Citrate Powder.jpg" alt="Magnesium Citrate Powder">
+            <h3>Magnesium Citrate Powder</h3>
+            <p>Supports muscle relaxation and nerve function.</p>
+            <div class="stars">★★★★★</div>
+            <p>₹995.17</p>
+            <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="Images/Zinc Picolinate Capsules.jpg" alt="Zinc Picolinate Capsules">
+            <h3>Zinc Picolinate Capsules</h3>
+            <p>Supports immune function and skin health.</p>
+            <div class="stars">★★★★★</div>
+            <p>₹746.17</p>
+            <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+        <div class="product">
+            <img src="Images/Iron Biglycinate Capsules.jpg" alt="Iron Bisglycinate Capsules">
+            <h3>Iron Bisglycinate Capsules</h3>
+            <p>Supports red blood cell production and energy levels.</p>
+            <div class="stars">★★★★★</div>
+            <p>₹1161.17</p>
+            <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="product">
+            <img src="Images/Probiotic Blend Capsules.jpg" alt="Probiotic Blend Capsules">
+            <h3>Probiotic Blend Capsules</h3>
+            <p>Supports digestive health and immune function.</p>
+            <div class="stars">★★★★☆</div>
+            <p>₹1825.17</p>
+            <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+        </section>    
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FitHub</h3>
+                    <p>Your ultimate resource for fitness training, nutrition advice, and premium supplements.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/pratham_chugh_20?igsh=MWd0ZTgyNTJmYXZw"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="Chatbot.html">Workouts</a></li>
+                        <li><a href="fithublearn.html">E-Learnings</a></li>
+                        <li><a href="nutrition.html">Nutrition</a></li>
+                        <li><a href="project.html">Supplements</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="submit.html">Shipping</a></li>
+                        <li><a href="developer.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get fitness tips and exclusive offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 FitHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> 
+</body>
+</html>

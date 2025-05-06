@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creatine Supplements - FitHub</title>
+    <title>Protein Powders - FitHub</title>
     <style>
     /* General Styles */
     body {
@@ -154,92 +154,92 @@
     }
 
     /* Product Grid Styles */
-    .product-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: auto;
     }
     
     /* Product Card Styles */
-    .product {
-      background-color: #1a1a1a;
+    .product-card {
+      background: #111;
       border-radius: 10px;
-      width: 250px;
-      padding: 15px;
+      padding: 20px;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(255, 69, 0, 0.3);
-      transition: transform 0.3s ease-in-out;
-      opacity: 0;
       transform: translateY(50px);
+      opacity: 0;
+      transition: transform 0.8s ease-out, opacity 0.8s ease-out;
     }
     
-    .product:hover {
-      transform: translateY(-5px) scale(1.05);
-    }
-
-    /* Product Images */
-    .product img {
+    /* Image */
+    .product-card img {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 5px;
+      border-radius: 10px;
     }
     
-    /* Product Title */
-    .product h3 {
-      font-size: 1.2rem;
-      margin: 10px 0;
-      color: white;
+    /* Hover Effect */
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 15px #ff4500;
     }
     
-    /* Star Ratings */
-    .stars {
-      color: gold;
-      font-size: 1.2rem;
-    }
-    
-    /* Price */
-    .product p {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin: 5px 0;
-      color: #FF6600;
-    }
-    
-    /* Buy Now Button */
+    /* Buy Button */
     .buy-btn {
       display: inline-block;
-      padding: 8px 15px;
-      background-color: #ff4500;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #ff4500;
       color: white;
       text-decoration: none;
-      font-weight: bold;
       border-radius: 5px;
-      margin-top: 10px;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s;
     }
     
     .buy-btn:hover {
-      background-color: #ff6500;
+      background: #ff6500;
+    }
+    
+    /* Scroll Animation */
+    .show {
+      transform: translateY(0);
+      opacity: 1;
     }
 
     /* Title Styles */
-    .page-title {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      color: #FF6600;
-      text-align: center;
+    .title {
+      font-size: 36px;
+      margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 2px;
+      animation: fadeIn 2s ease-in-out;
+      color: #FF6600;
+      text-align: center;
     }
 
     /* Keyframes */
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+
+    /* Product Details */
+    .product-card h2 {
+      font-size: 1.3rem;
+      margin: 10px 0;
+      color: white;
+    }
+
+    .product-card p {
+      color: #ddd;
+      margin: 5px 0;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #FF6600;
     }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -254,9 +254,9 @@
         <ul class="nav-links">
           <li><a href="sdg.html">SDG Goals</a></li> 
           <li><a href="login2.html">Login</a></li>   
-          <li><a href="index.html">Home</a></li>
+          <li><a href="muscle.html">Home</a></li>
           <li><a href="Bmi.html">BMI Calculator</a></li>
-          <li><a href="Chatbot.html">Workouts</a></li>
+          <li><a href="index.html">Workouts</a></li>
           <li><a href="fithublearn.html">E-Learning</a></li>
           <li><a href="nutrition.html">MuscleGainPro</a></li>
           <li><a href="project.html">Supplements</a></li>
@@ -271,102 +271,103 @@
 
   <!-- Main Content -->
   <div class="main-content">
-    <h1 class="page-title">Creatine Supplements</h1>
+    <h1 class="title">Protein Powders</h1>
     
-    <div class="product-container">
-      <div class="product">
-        <img src="Images/creatine monohydrate powder.jpg" alt="Creatine Monohydrate Powder">
-        <h3>Creatine Monohydrate Powder</h3>
-        <div class="stars">★★★★★</div>
-        <p>₹1999</p>
+    <div class="product-grid">
+      <!-- 12 Product Cards -->
+      <div class="product-card">
+        <img src="Images/whey.png" alt="Whey Protein">
+        <h2>Whey Protein Isolate</h2>
+        <p>Premium protein for muscle recovery.</p>
+        <p class="price">₹2999</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
-  
-      <div class="product">
-        <img src="Images/creatine capsules.jpg" alt="Creatine Capsules">
-        <h3>Creatine Capsules</h3>
-        <div class="stars">★★★★★</div>
-        <p>₹2499</p>
+
+      <div class="product-card">
+        <img src="Images/casein protein.jpg" alt="Casein Protein">
+        <h2>Casein Protein Powder</h2>
+        <p>Slow-digesting protein for overnight recovery.</p>
+        <p class="price">₹3499</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
-  
-      <div class="product">
-        <img src="Images/creatine ethyl ester powder.jpg" alt="Creatine Ethyl Ester Powder">
-        <h3>Creatine Ethyl Ester Powder</h3>
-        <div class="stars">★★★★☆</div>
-        <p>₹2299</p>
+
+      <div class="product-card">
+        <img src="Images/vegan protein blend.jpg" alt="Vegan Protein">
+        <h2>Vegan Protein Blend</h2>
+        <p>Plant-based protein for all diets.</p>
+        <p class="price">₹2799</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
-  
-      <div class="product">
-        <img src="Images/creatine HCL Powder.jpg" alt="Creatine HCL Powder">
-        <h3>Creatine HCL Powder</h3>
-        <div class="stars">★★★★★</div>
-        <p>₹2799</p>
+
+      <div class="product-card">
+        <img src="Images/whey protein concentrate powder.jpg" alt="Whey Protein Concentrate">
+        <h2>Whey Protein Concentrate</h2>
+        <p>Affordable and effective protein source.</p>
+        <p class="price">₹1999</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
-  
-      <div class="product">
-        <img src="Images/Buffered Creatine Powder.jpg" alt="Buffered Creatine Powder">
-        <h3>Buffered Creatine Powder</h3>
-        <div class="stars">★★★★☆</div>
-        <p>₹2599</p>
+
+      <div class="product-card">
+        <img src="Images/soy protein powder.jpg" alt="Soy Protein">
+        <h2>Soy Protein Powder</h2>
+        <p>Complete protein from soybeans.</p>
+        <p class="price">₹2499</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
-  
-      <div class="product">
-        <img src="Images/Creatine Nitrate Powder.jpg" alt="Creatine Nitrate Powder">
-        <h3>Creatine Nitrate Powder</h3>
-        <div class="stars">★★★★★</div>
-        <p>₹2999</p>
+
+      <div class="product-card">
+        <img src="Images/egg white protein powder.jpg" alt="Egg Protein">
+        <h2>Egg White Protein Powder</h2>
+        <p>Pure protein from egg whites.</p>
+        <p class="price">₹3199</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
-  
-      <div class="product">
-        <img src="Images/Creatine Magnesium Chelate Powder.jpg" alt="Creatine Magnesium Chelate Powder">
-        <h3>Creatine Magnesium Chelate Powder</h3>
-        <div class="stars">★★★★★</div>
-        <p>₹3299</p>
+
+      <div class="product-card">
+        <img src="Images/beef protein isolate powder.jpg" alt="Beef Protein">
+        <h2>Beef Protein Isolate</h2>
+        <p>Alternative protein source from beef.</p>
+        <p class="price">₹3699</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
-  
-      <div class="product">
-        <img src="Images/Micronized Creatine Powder.jpg" alt="Micronized Creatine Powder">
-        <h3>Micronized Creatine Powder</h3>
-        <div class="stars">★★★★☆</div>
-        <p>₹2199</p>
+
+      <div class="product-card">
+        <img src="Images/pea protein powder.jpg" alt="Pea Protein">
+        <h2>Pea Protein Powder</h2>
+        <p>Highly digestible plant-based protein.</p>
+        <p class="price">₹2299</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
-  
-      <div class="product">
-        <img src="Images/Creatine Citrate Powder.jpg" alt="Creatine Citrate Powder">
-        <h3>Creatine Citrate Powder</h3>
-        <div class="stars">★★★★★</div>
-        <p>₹2699</p>
+
+      <div class="product-card">
+        <img src="Images/brown rice protein powder.jpg" alt="Brown Rice Protein">
+        <h2>Brown Rice Protein Powder</h2>
+        <p>Protein from whole grain brown rice.</p>
+        <p class="price">₹1690</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
-  
-      <div class="product">
-        <img src="Images/creatine ethyl ester powder.jpg" alt="Creatine Phosphate Powder">
-        <h3>Creatine Phosphate Powder</h3>
-        <div class="stars">★★★★☆</div>
-        <p>₹3099</p>
+
+      <div class="product-card">
+        <img src="Images/hemp protein powder.jpg" alt="Hemp Protein">
+        <h2>Hemp Protein Powder</h2>
+        <p>Nutrient-rich protein from hemp seeds.</p>
+        <p class="price">₹2899</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
-  
-      <div class="product">
-        <img src="Images/Creatine Pyruvate Powder.jpg" alt="Creatine Pyruvate Powder">
-        <h3>Creatine Pyruvate Powder</h3>
-        <div class="stars">★★★★★</div>
-        <p>₹2899</p>
+
+      <div class="product-card">
+        <img src="Images/collagen protein powder.jpg" alt="Collagen Protein">
+        <h2>Collagen Protein Powder</h2>
+        <p>Supports skin, joints, and hair health.</p>
+        <p class="price">₹3299</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
-  
-      <div class="product">
-        <img src="Images/Creatine Malate Powder.jpg" alt="Creatine Malate Powder">
-        <h3>Creatine Malate Powder</h3>
-        <div class="stars">★★★★☆</div>
-        <p>₹2399</p>
+
+      <div class="product-card">
+        <img src="Images/optinum nutrition gold.jpg" alt="Gold Standard Whey">
+        <h2>Gold Standard Whey</h2>
+        <p>Top-quality whey protein for athletes.</p>
+        <p class="price">₹399</p>
         <a href="#" class="buy-btn">Buy Now</a>
       </div>
     </div>
@@ -427,26 +428,27 @@
   <script>
     // Scroll animation for product cards
     document.addEventListener('DOMContentLoaded', function() {
-      const products = document.querySelectorAll('.product');
+      const productCards = document.querySelectorAll('.product-card');
       
-      function checkProducts() {
+      function checkCards() {
         const triggerBottom = window.innerHeight / 5 * 4;
         
-        products.forEach(product => {
-          const productTop = product.getBoundingClientRect().top;
+        productCards.forEach(card => {
+          const cardTop = card.getBoundingClientRect().top;
           
-          if(productTop < triggerBottom) {
-            product.style.opacity = '1';
-            product.style.transform = 'translateY(0)';
+          if(cardTop < triggerBottom) {
+            card.classList.add('show');
+          } else {
+            card.classList.remove('show');
           }
         });
       }
       
       // Initial check
-      checkProducts();
+      checkCards();
       
       // Check on scroll
-      window.addEventListener('scroll', checkProducts);
+      window.addEventListener('scroll', checkCards);
     });
   </script>
 </body>

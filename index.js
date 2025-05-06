@@ -102,7 +102,7 @@ chatbtn.addEventListener("click", () => {
   showLoading();
 });
 
-let ai = document.querySelector(".Images/virtual-assistant img");
+let ai = document.querySelector(".virtual-assistant img");
 let speakpage = document.querySelector(".speak-page");
 let content = document.querySelector(".speak-page h1");
 
