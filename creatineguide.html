@@ -1,102 +1,477 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creatine Supplement Guides</title>
-    <link rel="stylesheet" href="style_1.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vitamins & Minerals Supplement Guides</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      color: #FFFFFF;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header Styles */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: #000000;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .header-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Arial', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .logo span {
+      color: #FF6600;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links li {
+      margin-left: 20px;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #FF6600;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Main Content */
+    main {
+      margin-top: 80px;
+      flex: 1;
+      padding: 20px;
+    }
+
+    /* Product Grid */
+    .container_2 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    /* Individual Product Box */
+    .product {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      width: 250px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(255, 69, 0, 0.3);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    img {
+      width: 100%;
+      height: 200px; 
+      object-fit: cover; 
+      border-radius: 5px;
+    }
+
+    /* Product Images */
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    /* Product Title */
+    .product h3 {
+      font-size: 1.2rem;
+      margin: 10px 0;
+      color: white;
+    }
+
+    /* Star Ratings */
+    .stars {
+      color: gold;
+      font-size: 1.2rem;
+    }
+
+    /* Price */
+    .product p {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 5px 0;
+      color: white;
+    }
+
+    /* Buy Now Button */
+    .buy-btn {
+      display: inline-block;
+      padding: 8px 15px;
+      background-color: orangered;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-btn:hover {
+      background-color: red;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: black;
+      color: white;
+      padding: 50px 0 20px;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column ul li a:hover {
+      color: #FF6600;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: #FF6600;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Newsletter Form Styles */
+    .footer-column form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .footer-column input[type="email"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.8);
+      outline: none;
+      box-sizing: border-box;
+    }
+    
+    .footer-column input[type="email"]:focus {
+      border-color: #FF6600;
+      box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.2);
+    }
+    
+    .footer-column .btn {
+      padding: 10px;
+      background-color: #FF6600;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-column .btn:hover {
+      background-color: #e65c00;
+    }
+
+    /* Page Title */
+    .page-title {
+      text-align: center;
+      margin: 20px 0 40px;
+      color: #FF6600;
+      font-size: 2.5rem;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+  <!-- Header -->
+  <header id="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">Fit<span>Hub</span></a>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="sdg.html">SDG Goals</a></li> 
+          <li><a href="login2.html">Login</a></li>   
+          <li><a href="muscle.html">Home</a></li>
+          <li><a href="Bmi.html">BMI Calculator</a></li>
+          <li><a href="index.html">Workouts</a></li>
+          <li><a href="fithublearn.html">E-Learning</a></li>
+          <li><a href="nutrition.html">MuscleGainPro</a></li>
+          <li><a href="project.html">Supplements</a></li>
+          <li><a href="developer.html">Developers</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
 
-<header>
-    <h1>Creatine Supplement Guides</h1>
-</header>
+  <main>
+    <h1 class="page-title">Vitamins & Minerals Supplement Guides</h1>
 
-<section class="container_2">
-    <!-- Product Cards -->
-    <div class="product">
-        <img src="Images/creatine handbook.jpg" alt="Creatine Handbook">
-        <h3>Creatine Handbook</h3>
-        <p>Your Guide to Enhanced Performance.</p>
+    <section class="container_2">
+      <div class="product">
+        <img src="Images/vitaminguide.jpg" alt="Guide">
+        <h3>Vitamins & Minerals: A Comprehensive Guide</h3>
+        <p>Essential Nutrients for Optimal Performance.</p>
         <div class="stars">⭐⭐⭐⭐☆</div>
         <p>₹499</p>
         <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+      </div>
 
-    <div class="product">
-        <img src="Images/creatine a practical guide.jpg" alt="Creatine: A Practical Guide">
-        <h3>Creatine: A Practical Guide</h3>
-        <p>Science-Backed Strategies.</p>
+      <div class="product">
+        <img src="Images/athelete.jpg" alt="Guide">
+        <h3>The Athlete's Guide to Vitamins</h3>
+        <p>Boosting Performance with Key Nutrients.</p>
         <div class="stars">⭐⭐⭐⭐⭐</div>
         <p>₹399</p>
         <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+      </div>
 
-    <div class="product">
-        <img src="Images/power of creatine.jpg" alt="The Power of Creatine">
-        <h3>The Power of Creatine</h3>
-        <p>Unleash Your Potential.</p>
+      <div class="product">
+        <img src="Images/fore1.jpg" alt="Guide">
+        <h3>Minerals for Peak Athletic Performance</h3>
+        <p>Optimize Your Health and Fitness.</p>
         <div class="stars">⭐⭐⭐⭐☆</div>
         <p>₹499</p>
         <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+      </div>
 
-    <div class="product">
-        <img src="Images/creatine for athletes.jpg" alt="Creatine for Athletes">
-        <h3>Creatine for Athletes</h3>
-        <p>Optimizing Performance.</p>
+      <div class="product">
+        <img src="Images/endurance.jpg" alt="Guide">
+        <h3>Vitamins & Minerals for Endurance Athletes</h3>
+        <p>Sustaining Energy and Reducing Fatigue.</p>
         <div class="stars">⭐⭐⭐⭐⭐</div>
         <p>₹349</p>
         <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+      </div>
 
-    <div class="product">
-        <img src="Images/creatine what you need to know.jpg"> alt="Creatine: What You Need to Know">
-        <h3>Creatine: What You Need to Know</h3>
-        <p>Facts and Myths Debunked.</p>
+      <div class="product">
+        <img src="Images/recovery.jpg" alt="Guide">
+        <h3>The Role of Vitamins in Muscle Recovery</h3>
+        <p>Speeding Up Recovery and Reducing Soreness</p>
         <div class="stars">⭐⭐⭐☆☆</div>
         <p>₹379</p>
         <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+      </div>
 
-    <div class="product">
-        <img src="Images/creatine and muscle growth.jpg" alt="Creatine and Muscle Growth">
-        <h3>Creatine and Muscle Growth</h3>
-        <p>A Comprehensive Guide.</p>
+      <div class="product">
+        <img src="Images/essential.jpg" alt="Guide">
+        <h3>Essential Minerals for Athletes</h3>
+        <p>Supporting Bone Health and Energy Production.</p>
         <div class="stars">⭐⭐⭐☆☆</div>
         <p>₹799</p>
         <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+      </div>
 
-    <div class="product">
-        <img src="Images/creatine edge.jpg" alt="The Creatine Edge">
-        <h3>The Creatine Edge</h3>
-        <p>Gain a Competitive Advantage.</p>
+      <div class="product">
+        <img src="Images/vitguide.jpg" alt="Guide">
+        <h3>Vitamins & Minerals: What Athletes Need to Know</h3>
+        <p>Facts, Myths, and Recommendations.</p>
         <div class="stars">⭐⭐⭐☆☆</div>
         <p>₹529</p>
         <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+      </div>
 
-    <div class="product">
-        <img src="Images/creatine the ultimate guide.jpg" alt="Creatine: The Ultimate Guide">
-        <h3>Creatine: The Ultimate Guide</h3>
-        <p>Everything You Need to Know.</p>
+      <div class="product">
+        <img src="Images/complete guide to pre-workout.jpg" alt="Guide">
+        <h3>The Complete Guide to Minerals for Athletes</h3>
+        <p>Maximize Your Athletic Potential.</p>
         <div class="stars">⭐⭐⭐☆☆</div>
         <p>₹429</p>
         <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+      </div>
 
-    <div class="product">
-        <img src="Images/creatine for beginners.jpg" alt="Creatine for Beginners">
-        <h3>Creatine for Beginners</h3>
-        <p>A Simple Introduction.</p>
+      <div class="product">
+        <img src="Images/perform.jpg" alt="Guide">
+        <h3>Vitamins and Athletic Performance</h3>
+        <p>Unlocking Your Body's Potential.</p>
         <div class="stars">⭐⭐⭐☆☆</div>
         <p>₹579</p>
         <a href="#" class="buy-btn">Buy Now</a>
-    </div>
-</section>
+      </div>
 
-<script src="script.js"></script> 
+      <div class="product">
+        <img src="Images/optinum nutrition gold.jpg" alt="Guide">
+        <h3>Optimal Vitamin Intake for Athletes</h3>
+        <p>A Practical Guide to Enhanced Performance</p>
+        <div class="stars">⭐⭐⭐☆☆</div>
+        <p>₹579</p>
+        <a href="#" class="buy-btn">Buy Now</a>
+      </div>
+
+      <div class="product">
+        <img src="Images/maximizing your pre-workout potential.jpg" alt="Guide">
+        <h3>The Power of Minerals</h3>
+        <p>Improve Your Health and Fitness.</p>
+        <div class="stars">⭐⭐⭐☆☆</div>
+        <p>₹579</p>
+        <a href="#" class="buy-btn">Buy Now</a>
+      </div>
+
+      <div class="product">
+        <img src="Images/vitaminguide1.jpg" alt="Guide">
+        <h3>Vitamins & Minerals: The Athlete's Choice</h3>
+        <p>Fueling Your Body for Success.</p>
+        <div class="stars">⭐⭐⭐☆☆</div>
+        <p>₹579</p>
+        <a href="#" class="buy-btn">Buy Now</a>
+      </div>
+    </section>
+  </main>
+  
+  <footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>FitHub</h3>
+                <p>Your ultimate resource for fitness training, nutrition advice, and premium supplements.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/pratham_chugh_20?igsh=MWd0ZTgyNTJmYXZw"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Chatbot.html">Workouts</a></li>
+                    <li><a href="fithublearn.html">E-Learnings</a></li>
+                    <li><a href="nutrition.html">Nutrition</a></li>
+                    <li><a href="project.html">Supplements</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="submit.html">Shipping</a></li>
+                    <li><a href="developer.html">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get fitness tips and exclusive offers.</p>
+                <form>
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 FitHub. All rights reserved.</p>
+        </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

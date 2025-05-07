@@ -1,100 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Ultimate Pre-Workout Guides</title>
-  <link rel="stylesheet" href="style_1.css"/>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Pre-Workout Guides</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: #000000;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Arial', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #FF6600;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #FF6600;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            margin: 40px 0;
+            color: #FF6600;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Product Grid */
+        .container_2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Individual Product Box */
+        .product {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            width: 250px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(255, 69, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Product Images */
+        .product img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /* Product Title */
+        .product h3 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: white;
+        }
+
+        /* Star Ratings */
+        .stars {
+            color: gold;
+            font-size: 1.2rem;
+        }
+
+        /* Price */
+        .product p {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 5px 0;
+            color: white;
+        }
+
+        /* Buy Now Button */
+        .buy-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: orangered;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-btn:hover {
+            background-color: red;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: black;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #FF6600;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #FF6600;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Newsletter Form Styles */
+        .footer-column form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .footer-column input[type="email"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.8);
+            outline: none;
+            box-sizing: border-box;
+        }
+        
+        .footer-column input[type="email"]:focus {
+            border-color: #FF6600;
+            box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.2);
+        }
+        
+        .footer-column .btn {
+            padding: 10px;
+            background-color: #FF6600;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column .btn:hover {
+            background-color: #e65c00;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">Fit<span>Hub</span></a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="sdg.html">SDG Goals</a></li> 
+                    <li><a href="login2.html">Login</a></li>   
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Bmi.html">BMI Calculator</a></li>
+                    <li><a href="Chatbot.html">Workouts</a></li>
+                    <li><a href="fithublearn.html">E-Learning</a></li>
+                    <li><a href="nutrition.html">MuscleGainPro</a></li>
+                    <li><a href="project.html">Supplements</a></li>
+                    <li><a href="developer.html">Developers</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
 
-  <header>
-    <h1>The Ultimate Pre-Workout Guides</h1>
-  </header>
+    <main>
+        <h1 class="page-title">The Ultimate Pre-Workout Guides</h1>
 
-  <section class="container_2">
-    <div class="product">
-      <img src="Images/pre-workout nutrition for athletes.jpg" alt="Pre-Workout Nutrition for Athletes"/>
-      <h3>Pre-Workout Nutrition for Athletes</h3>
-      <p>Fuel your performance with expert guidance.</p>
-      <div class="stars">⭐⭐⭐⭐☆</div>
-      <p>₹499</p>
-      <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+        <section class="container_2">
+            <div class="product">
+                <img src="Images/pre-workout nutrition for athletes.jpg" alt="Pre-Workout Nutrition for Athletes"/>
+                <h3>Pre-Workout Nutrition for Athletes</h3>
+                <p>Fuel your performance with expert guidance.</p>
+                <div class="stars">⭐⭐⭐⭐☆</div>
+                <p>₹499</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
 
-    <div class="product">
-      <img src="Images/science of pre-workout supplement.jpg" alt="The Science of Pre-Workout Supplements"/>
-      <h3>The Science of Pre-Workout Supplements</h3>
-      <p>Understand the ingredients for peak results.</p>
-      <div class="stars">⭐⭐⭐⭐⭐</div>
-      <p>₹399</p>
-      <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+            <div class="product">
+                <img src="Images/science of pre-workout supplement.jpg" alt="The Science of Pre-Workout Supplements"/>
+                <h3>The Science of Pre-Workout Supplements</h3>
+                <p>Understand the ingredients for peak results.</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>₹399</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
 
-    <div class="product">
-      <img src="Images/fuel your workout.jpg" alt="Fuel Your Workout"/>
-      <h3>Fuel Your Workout: A Pre-Workout Handbook</h3>
-      <p>Your comprehensive guide to pre-workout strategies.</p>
-      <div class="stars">⭐⭐⭐⭐☆</div>
-      <p>₹499</p>
-      <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+            <div class="product">
+                <img src="Images/fuel your workout.jpg" alt="Fuel Your Workout"/>
+                <h3>Fuel Your Workout: A Pre-Workout Handbook</h3>
+                <p>Your comprehensive guide to pre-workout strategies.</p>
+                <div class="stars">⭐⭐⭐⭐☆</div>
+                <p>₹499</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
 
-    <div class="product">
-      <img src="Images/natural pre-workout recipes.jpg" alt="Natural Pre-Workout Recipes"/>
-      <h3>Natural Pre-Workout Recipes</h3>
-      <p>Delicious and effective recipes for natural energy.</p>
-      <div class="stars">⭐⭐⭐⭐⭐</div>
-      <p>₹349</p>
-      <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+            <div class="product">
+                <img src="Images/natural pre-workout recipes.jpg" alt="Natural Pre-Workout Recipes"/>
+                <h3>Natural Pre-Workout Recipes</h3>
+                <p>Delicious and effective recipes for natural energy.</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>₹349</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
 
-    <div class="product">
-      <img src="Images/complete guide to pre-workout.jpg" alt="The Complete Guide to Pre-Workout"/>
-      <h3>The Complete Guide to Pre-Workout</h3>
-      <p>Everything you need to know about pre-workout supplements.</p>
-      <div class="stars">⭐⭐⭐☆☆</div>
-      <p>₹379</p>
-      <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+            <div class="product">
+                <img src="Images/complete guide to pre-workout.jpg" alt="The Complete Guide to Pre-Workout"/>
+                <h3>The Complete Guide to Pre-Workout</h3>
+                <p>Everything you need to know about pre-workout supplements.</p>
+                <div class="stars">⭐⭐⭐☆☆</div>
+                <p>₹379</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
 
-    <div class="product">
-      <img src="Images/Pre-workout-what to eat before.jpg" alt="What to Eat Before Workout"/>
-      <h3>Pre-Workout: What to Eat Before Your Workout</h3>
-      <p>Optimize your nutrition for better workouts.</p>
-      <div class="stars">⭐⭐⭐☆☆</div>
-      <p>₹799</p>
-      <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+            <div class="product">
+                <img src="Images/Pre-workout-what to eat before.jpg" alt="What to Eat Before Workout"/>
+                <h3>Pre-Workout: What to Eat Before Your Workout</h3>
+                <p>Optimize your nutrition for better workouts.</p>
+                <div class="stars">⭐⭐⭐☆☆</div>
+                <p>₹799</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
 
-    <div class="product">
-      <img src="Images/pre-workout smoothie bible.jpg" alt="Pre-Workout Smoothie Bible"/>
-      <h3>Pre-Workout Smoothie Bible</h3>
-      <p>The ultimate smoothie recipes for pre-workout energy.</p>
-      <div class="stars">⭐⭐⭐☆☆</div>
-      <p>₹529</p>
-      <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+            <div class="product">
+                <img src="Images/pre-workout smoothie bible.jpg" alt="Pre-Workout Smoothie Bible"/>
+                <h3>Pre-Workout Smoothie Bible</h3>
+                <p>The ultimate smoothie recipes for pre-workout energy.</p>
+                <div class="stars">⭐⭐⭐☆☆</div>
+                <p>₹529</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
 
-    <div class="product">
-      <img src="Images/pre-workout for women.jpg" alt="Pre-Workout for Women"/>
-      <h3>Pre-Workout for Women</h3>
-      <p>Tailored strategies for female athletes.</p>
-      <div class="stars">⭐⭐⭐☆☆</div>
-      <p>₹429</p>
-      <a href="#" class="buy-btn">Buy Now</a>
-    </div>
+            <div class="product">
+                <img src="Images/pre-workout for women.jpg" alt="Pre-Workout for Women"/>
+                <h3>Pre-Workout for Women</h3>
+                <p>Tailored strategies for female athletes.</p>
+                <div class="stars">⭐⭐⭐☆☆</div>
+                <p>₹429</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
 
-    <div class="product">
-      <img src="Images/maximizing your pre-workout potential.jpg" alt="Maximizing Pre-Workout Potential"/>
-      <h3>Maximizing Your Pre-Workout Potential</h3>
-      <p>Unlock your peak performance with these strategies.</p>
-      <div class="stars">⭐⭐⭐☆☆</div>
-      <p>₹579</p>
-      <a href="#" class="buy-btn">Buy Now</a>
-    </div>
-  </section>
+            <div class="product">
+                <img src="Images/maximizing your pre-workout potential.jpg" alt="Maximizing Pre-Workout Potential"/>
+                <h3>Maximizing Your Pre-Workout Potential</h3>
+                <p>Unlock your peak performance with these strategies.</p>
+                <div class="stars">⭐⭐⭐☆☆</div>
+                <p>₹579</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FitHub</h3>
+                    <p>Your ultimate resource for fitness training, nutrition advice, and premium supplements.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/pratham_chugh_20?igsh=MWd0ZTgyNTJmYXZw"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="Chatbot.html">Workouts</a></li>
+                        <li><a href="fithublearn.html">E-Learnings</a></li>
+                        <li><a href="nutrition.html">Nutrition</a></li>
+                        <li><a href="project.html">Supplements</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="submit.html">Shipping</a></li>
+                        <li><a href="developer.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get fitness tips and exclusive offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 FitHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
