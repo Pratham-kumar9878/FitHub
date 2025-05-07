@@ -473,12 +473,8 @@
         password === storedUser.password
       ) {
         alert('Login Successful! Welcome back, ' + username);
-        
-        // Debugging - Check if the redirect code is being triggered
         console.log("Redirecting to FitHub");
-
-        // Redirect to workout page after successful login
-        window.location.href = 'project.html';  // This redirects to muscle.html
+        window.location.href = 'index.html';  
       } else {
         alert('Invalid Username or Password!');
       }

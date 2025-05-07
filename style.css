@@ -255,3 +255,131 @@ span{
     cursor: pointer;
     
 }
+@media (max-width: 1024px) {
+    .select-box {
+        right: 20px;
+    }
+
+    .chat-box {
+        width: 40%;
+        height: 70%;
+    }
+
+    .prompt {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .select-box {
+        position: static;
+        width: 100%;
+    }
+
+    .select-heading,
+    .options {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .right-nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    main {
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .chat-box {
+        position: static;
+        width: 90%;
+        height: auto;
+        transform: none;
+    }
+
+    .input-area {
+        position: static;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .prompt {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .chat-container {
+        height: 200px;
+    }
+
+    .svgs {
+        position: static;
+        width: 100%;
+        height: auto;
+        overflow-x: scroll;
+    }
+
+    .svgs img {
+        width: 300px;
+    }
+
+    .virtual-assistant {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .speak-page img {
+        width: 100px;
+    }
+
+    .h1 {
+        font-size: 5vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 20px;
+    }
+
+    .prompt {
+        font-size: 14px;
+    }
+
+    .chat-box {
+        padding: 5px;
+    }
+
+    .option {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .user-chat-box,
+    .ai-chat-box {
+        width: 90%;
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .virtual-assistant img {
+        width: 80px;
+    }
+
+    .speak-page h1 {
+        font-size: 24px;
+    }
+}
