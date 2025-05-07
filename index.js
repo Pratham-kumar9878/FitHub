@@ -61,6 +61,21 @@ async function generateApiResponse(aiChatBox) {
     
     if (apiResponse) {
       textElement.innerText = apiResponse;
+      
+      // Check if the response contains workout information
+      if (apiResponse.toLowerCase().includes("workout") || 
+          apiResponse.toLowerCase().includes("exercise") ||
+          apiResponse.toLowerCase().includes("back") ||
+          apiResponse.toLowerCase().includes("chest") ||
+          apiResponse.toLowerCase().includes("shoulder") ||
+          apiResponse.toLowerCase().includes("leg")) {
+        
+        // Hide the chatbox after 3 seconds
+        setTimeout(() => {
+          chatbox.classList.remove("active-chat-box");
+          chatimg.src = "ai.svg";
+        }, 3000);
+      }
     } else {
       textElement.innerText = "Sorry, I couldn't understand that.";
     }
@@ -71,7 +86,6 @@ async function generateApiResponse(aiChatBox) {
     aiChatBox.querySelector(".loading").style.display = "none";
   }
 }
-
 function createChatBox(html, className) {
   const div = document.createElement("div");
   div.classList.add(className);
