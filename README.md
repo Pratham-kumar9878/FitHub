@@ -1,2 +1,3 @@
 # FitHub
-All in one Fitness Website
+Welcome to the Fithub!
+All in one fitness platform for your physical and mental growth.
