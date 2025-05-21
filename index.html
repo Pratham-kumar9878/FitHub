@@ -901,7 +901,7 @@
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/pratham_chugh_20?igsh=MWd0ZTgyNTJmYXZw"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://youtu.be/M6WXucyQiS4?si=ceM8yNcLCkI8zfTb"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -936,9 +936,6 @@
                 </div>
             </div>
             
-            <div class="copyright">
-                <p>&copy; 2025 FitHub. All rights reserved.</p>
-            </div>
         </div>
     </footer>
 
@@ -968,10 +965,9 @@
             document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
         });
         
-        // Close menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', function() {
-                if (window.innerWidth <= 992) { // Match your mobile breakpoint
+                if (window.innerWidth <= 992) {
                     navLinks.classList.remove('active');
                     mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
                     document.body.style.overflow = '';
